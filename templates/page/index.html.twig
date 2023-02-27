@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur mon portfolio !
+{% endblock %}
+
+{% block content %}
+
+	<header id="jumbotron">
+		<h1>👋 Salut, c'est Paul.<br>
+			Je suis développeur full-stack, j'aime créer des applications web de haute qualité, utiles et belles.</h1>
+	</header>
+
+	<img src="{{ asset("build/images/patchwork_images_paul_le_flem.png") }}" alt="Patchwork d'images des sites que j'ai réalisé" id="patchwork">
+
+	<div class="container">
+
+		<h2>Mes projets</h2>
+
+		<div class="project-grid">
+			<a href="#" class="project-preview cursor_trigger">
+				<img src="{{ asset("build/images/projets/un-jeune-une-alternance/cover.jpg") }}" alt="Page de un jeune une alternance" class="preview"/>
+				<div class="project-title">
+					Conception d'une plateforme de gestion
+				</div>
+				<div class="project-name">
+					Un jeune une alternance
+				</div>
+				<div class="project-date">
+					2023
+				</div>
+			</a>
+			<a href="#" class="project-preview cursor_trigger">
+				<img src="{{ asset("build/images/projets/aximonial/cover.jpg") }}" alt="Aximonial" class="preview"/>
+				<div class="project-title">
+					Conception d'un site de vente d'appartements
+				</div>
+				<div class="project-name">
+					Aximonial
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</a>
+			<a href="{{ path("app_project_portfolio_agathe_verasdonck") }}" class="project-preview cursor_trigger">
+				<img src="{{ asset("build/images/projets/aximonial/cover.jpg") }}" alt="Aximonial" class="preview"/>
+				<div class="project-title">
+					portfolio
+				</div>
+				<div class="project-name">
+					Agathe Verasdonck
+				</div>
+				<div class="project-date">
+					2023
+				</div>
+			</a>
+		</div>
+	</div>
+
+{% endblock %}

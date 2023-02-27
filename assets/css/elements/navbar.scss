@@ -1,0 +1,41 @@
+#navbar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 15px $spacer * 1.4;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: calc(100% - $spacer * 2.8);
+    background: $theme;
+    z-index: 99;
+
+    a {
+        color: $text-color;
+        text-decoration: none;
+        position: relative;
+        margin: 0px 15px;
+        z-index: 99999;
+
+        &.active {
+            color: $yellow;
+        }
+
+        &::after {
+            content: "";
+            left: 0px;
+            bottom: 0px;
+            width: 0px;
+            height: 1px;
+            transition: 0.2s;
+            background: $text-color;
+            position: absolute;
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}

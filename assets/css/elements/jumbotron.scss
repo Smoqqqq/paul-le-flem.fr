@@ -1,0 +1,13 @@
+#jumbotron {
+    min-height: $header-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    h1 {
+        max-width: 60vw;
+        text-align: center;
+        color: $text-color;
+    }
+}

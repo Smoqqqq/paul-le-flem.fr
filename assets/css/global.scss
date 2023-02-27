@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "GeorgeTown";
+    src: url("../fonts/GeorgeTown/TTF/GeorgeTown-Regular.ttf");
+}
+
+body {
+    font-family: "GeorgeTown", sans-serif;
+    margin: 0px;
+    color: white;
+    background: $theme;
+}
+
+h2 {
+    font-size: 100px;
+    text-transform: uppercase;
+    color: $text-color;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-end {
+    text-align: right;
+}
+
+#patchwork {
+    width: 100%;
+}
+
+.container {
+    padding: 0px $spacer * 1.4;
+}
+
+::selection {
+    background: $yellow;
+    color: $theme;
+}
+
+a, p {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.fs-25 {
+    font-size: 25px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.my-100 {
+    margin: $spacer 0px;
+}

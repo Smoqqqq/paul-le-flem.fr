@@ -1,0 +1,65 @@
+#footer {
+    background: $yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacer 0px calc($spacer * 1.5) 0px;
+    position: relative;
+    margin-top: $spacer;
+
+    p {
+        font-size: 20px;
+        color: $theme;
+        margin: 0px;
+    }
+
+    h2 {
+        margin: 30px 0px;
+        text-transform: none;
+        a {
+            font-size: 80px;
+            color: $theme;
+            text-decoration: none;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    a {
+        font-size: 20px;
+        text-decoration: none;
+        position: relative;
+        color: $theme;
+        margin: 25px;
+        z-index: 9999;
+
+        &::after {
+            content: "";
+            left: 0px;
+            bottom: 0px;
+            width: 0px;
+            height: 1px;
+            transition: 0.2s;
+            background: $theme;
+            position: absolute;
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    &::after {
+        left: calc($spacer / 2);
+        bottom: calc($spacer / 2);
+        width: calc(100% - $spacer);
+        height: 3px;
+        content: "";
+        background: $theme;
+        position: absolute;
+    }
+}

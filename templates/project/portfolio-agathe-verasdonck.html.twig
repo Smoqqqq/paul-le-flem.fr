@@ -1,0 +1,119 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<div class="container">
+		<div class="project-header">
+			<h2 class="project-title">Agathe Verasdonck - Portfolio</h2>
+			<h1 class="project-main-title">Plus qu'un simple site, une veritable galerie</h1>
+			<a href="https://agathe-verasdonck.fr" class="project-link" target="_blank">agathe-verasdonck.fr</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>LE CLIENT</h2>
+			</div>
+			<div class="content">
+				<p>Agathe Verasdonck est actuellement en dernière année de Bachelor Création Numérique et souhaite poursuivre ses études pour obtenir un Master dans le domaine de l'UI et UX Design. Elle est par conséquent en recherche active d'une école dans laquelle elle puisse effectuer ces deux dernières années d'études en alternance. Pour faciliter ses entretiens, elle souhaitait réaliser une refonte de son portfolios fin qu'il soit plus conforme aux attendus des écoles et des entreprises.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>CAHIER DES CHARGES</h2>
+			</div>
+			<div class="content">
+				<p>Agathe m'a transmit une maquette représentant le portfolio qu'elle souhait en version desktop début décembre. À ce stade, la maquette n'était pas encore complète. Elle souhaitait une première version du site pour mi-janvier avec les éléments déjà présents sur la maquette. Elle désirait entre temps compléter la maquette et m'informer pour que je puisse réaliser des ajustements dans le temps. Frustrée de devoir constamment faire appel à mes services pour rentrer ses nouveaux projets, elle m'a demandé de créer un back-office afin de gagner en autonomie.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="collab">
+			<div class="left">
+				<img src="{{ asset("build/images/Paul_Le_Flem.png") }}" alt="Mon portrait">
+			</div>
+			<div class="desc">
+				LA COLLAB
+				<br>
+				PAUL LE FLEM X
+				<span class="yellow">AGATHE VERASDONCK</span>
+			</div>
+			<div class="right">
+				<img src="{{ asset("build/images/profil_agathe_verasdonck.png") }}" alt="Portrait de Agathe Verasdonck">
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Technologies utilisées</h3>
+				<ul>
+					<li>Symfony 6.2</li>
+					<li>PHP 8.2</li>
+					<li>MySQL</li>
+					<li>Scss</li>
+					<li>Javascript</li>
+					<li>HTML (Twig)</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Rôle</h3>
+				<ul>
+					<li>Conception technique</li>
+					<li>Développement</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Conditions de travail</h3>
+				<ul>
+					<li>Travail sur le long terme</li>
+					<li>Réalisation à partir d'une maquette</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<img src="{{ asset("build/images/projets/portfolio-agathe/ancien_portfolio_agathe_paul_le_flem.png")}}" alt="Patchwork des pages du portfolio de Agathe Verasdonck" class="w-100 my-100">
+	</div>
+
+	<div class="container">
+		<h2 class="fs-25">Les étapes de conception</h2>
+		<div class="project-scroll">
+			<div id="project-scroll-images">
+				<div class="project-scroll-image">
+					<img src="{{ asset("build/images/")}}" alt="Maquette de agathe-verasdonck.fr">
+					<img src="{{ asset("build/images/")}}" alt="Maquette de agathe-verasdonck.fr">
+					<img src="{{ asset("build/images/projets/portfolio-agathe/")}}" alt="Structure des entitées">
+				</div>
+			</div>
+			<div class="division">
+				<h3 class="fs-25">1. ÉCHANGE AVEC LA CLIENTE</h3>
+				<p>Agathe, Designeuse UI / UX, m'as transmit une maquette représentant le portfolio qu'elle souhaitait réaliser début décembre. À ce stade, la maquette n'était pas encore complète. Elle souhaitait une première version du site pour mi-janvier avec les éléments déjà présents sur la maquette. Elle désirait entre temps compléter la maquette et m'informer pour que je puisse réaliser des ajustements dans le temps. Frustrée de devoir constamment faire appel à mes services pour rentrer ses nouveaux projets, elle m'a demandé de créer un back-office afin de gagner en autonomie.
+				</p>
+			</div>
+			<div class="division">
+				<h3 class="fs-25">2. ANALYSE DE LA MAQUETTE</h3>
+				<p>Après qu'Agathe ait formulé cette demande de création d'un back-office, j'ai donc commencé par préparer la conception du projet. J'ai commencé par aller regarder la maquette en détail, de manière à pouvoir développer le système en fonction de ses besoins. Après un échange, nous avons décidés que seul les projets serait administrables, car ce sont eux qui seront amené à être ajouter au fil du temps. Les autres éléments (page à propos, accueil), de par leur relative simplicitée, ne nécessitent pas d'êtres administrables.</p>
+			</div>
+			<div class="division">
+				<h3 class="fs-25">Conception de la structure d'un projet</h3>
+				<p>En analysant les pages projets de la maquette, on remarque qu'un projet est scindé en plusieurs 'blocs', qui reviennent sur chaque projets. C'est à ce moment que j'ai décidé de la structure des projets dans le code de l'application. Chaque projet est découpé en plusieurs entités, conçues de manière à être 100% personnalisables.</p>
+				<p>La structure est la suivante :
+				</p>
+				<ul>
+					<li>Une classe
+						<code>Project</code>, qui représente le projet dans sa globalité. Elle contient les informations telles que son nom, sa description, son image de couverture etc.</li>
+					<li>Une classe
+						<code>Block</code>, générique, qui fait la relation entre les différents blocs disponibles pour la création du projet</li>
+					<li>Enfin, plusieurs classes
+						<code>*Type*Block</code>
+						représentent les différents blocs existants</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+.project-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: calc($spacer + 55px);
+    padding-bottom: $spacer;
+    margin-bottom: $spacer;
+
+    .project-title, .project-link {
+        font-size: 25px;
+        color: $text-color;
+        margin: 0px;
+    }
+
+    .project-title {
+        text-transform: uppercase;
+    }
+
+    .project-main-title {
+        margin: 100px 0px;
+        font-size: 100px;
+        color: white;
+        text-transform: uppercase;
+    }
+}
