@@ -13,4 +13,22 @@ class ProjectController extends AbstractController
     {
         return $this->render('project/portfolio-agathe-verasdonck.html.twig');
     }
+
+    #[Route('/projet/aximonial', name: 'app_project_aximonial')]
+    public function aximonial(): Response
+    {
+        return $this->render('project/aximonial.html.twig');
+    }
+
+    #[Route('/projet/aventure-culture', name: 'app_project_aventure_culture')]
+    public function aventureCulture(): Response
+    {
+        return $this->render('project/aventure-culture.html.twig');
+    }
+
+    #[Route('/projet/aventure-culture/jouer', name: 'app_project_play_aventure_culture')]
+    public function jeuAventureCulture(): Response
+    {
+        return $this->render('jeu-aventure-culture/index.html.twig');
+    }
 }

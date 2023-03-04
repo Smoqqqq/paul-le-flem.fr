@@ -1,0 +1,197 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<div class="container">
+		<div class="project-header">
+			<h2 class="project-title">Agathe Verasdonck - Aventure culture</h2>
+			<h1 class="project-main-title">Un jeu vidéo pour apprendre</h1>
+			<a href="{{ path("app_project_play_aventure_culture") }}" class="project-link" target="_blank">Jouer au jeu</a>
+		</div>
+	</div>
+
+	<img src="{{ asset("build/images/projets/portfolio-agathe/realisation_paul_le_flem_portfolio_agathe_verasdonck.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="w-100">
+
+	<div class="container mt-100">
+		<div class="text-block">
+			<div class="title">
+				<h2>LE CLIENT</h2>
+			</div>
+			<div class="content">
+				<p>Agathe Verasdonck est actuellement en dernière année de Bachelor Création Numérique. Dans le cadre de ces études, il lui à été demandé de présenter 4 de ces mentors. Après reflexion sur le sujet, elle à décidé de les présenter sous forme d'un petit jeu vidéo, baptisé l'aventure culture.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>CAHIER DES CHARGES</h2>
+			</div>
+			<div class="content">
+				<p>Agathe m'as transmise ue maquette représentant les différents éléments du jeu, et m'as présenté le fonctionnement souhaite. Le principe est le suivant : au lancement du jeu, des dialogues apparaisent au fur et a mesure, introduisant le jeu. Suite à ces dialogues, le joueur à la possibilité de choisir entre trois Agathe différentes comme personnage. Un menu est ensuite affiché, proposant de choisir le niveau souhaité (un seul est actuellement disponible). Le jeu peut alors démarrer ! sur la carte on retrouve les quatres mentors, chacun proposant au joueur de répondre à un quizz sur sa vie.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="collab">
+			<div class="left">
+				<img src="{{ asset("build/images/projets/portfolio-agathe/profil_paul_le_flem.png") }}" alt="Mon portrait">
+			</div>
+			<div class="desc">
+				LA COLLAB
+				<br>
+				PAUL LE FLEM X
+				<span class="yellow">AGATHE VERASDONCK</span>
+			</div>
+			<div class="right">
+				<img src="{{ asset("build/images/profil_agathe_verasdonck.png") }}" alt="Portrait de Agathe Verasdonck">
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Technologies utilisées</h3>
+				<ul>
+					<li>HTML</li>
+					<li>Javascript</li>
+					<li>Css</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Rôle</h3>
+				<ul>
+					<li>Conception technique</li>
+					<li>Développement</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Conditions de travail</h3>
+				<ul>
+					<li>Travail seul</li>
+					<li>Réalisé à partir d'une maquette</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<img src="{{ asset("build/images/projets/portfolio-agathe/ancien_portfolio_agathe_paul_le_flem.png")}}" alt="Patchwork des pages de l'ancien portfolio de Agathe Verasdonck" class="w-100 my-100">
+	</div>
+
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception du jeu</h2>
+			</div>
+			<div class="content">
+				<p>J'ai vu la réalisation de ce jeu comme un challenge. N'étant absolument pas développeur de jeu vidéo, j'ai décidé de le concevoir en javascript, ayant déja eu l'occasion de réaliser quelques petits jeux dans mon temps libre. Je n'ai utilisé aucun framework ou librairie, souhaitant garder la base de code simple. J'ai utilisé une balise HTML <code>Canvas</code>, qui me sert de "tableau", où je vient afficher les éléments du jeu.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception des composants</h2>
+			</div>
+			<div class="content">
+				<p>Par préférence et pour pouvoir facilement créer de nouveau niveaux, j'ai développé le jeu en orienté objet. Une classe principale <code>Game</code> représente le jeu dans sa globalité. C'est elle qui en gère le fonctionnement, et qui vient instancier les différents éléments. Une classe "secondaire", <code>Level</code>, est étendue par les différents niveaux du jeu. C'est elle qui à pour rôle de démarrer "l'event loop" : une fonction appelée à chaque "frame", qui démarre les différentes routines.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<video src="{{ asset("build/images/projets/portfolio-agathe/video_maquette_portfolio_agathe_verasdonck.mov") }}" autoplay muted loop class="mx-100 mt-100"></video>
+	</div>
+
+	<div class="container">
+		<img src="{{ asset("build/images/projets/portfolio-agathe/nouveau_portfolio_agathe-verasdonck.png")}}" alt="Patchwork des pages du portfolio de Agathe Verasdonck" class="w-100 mt-100">
+	</div>
+
+	<div class="container">
+		<div class="row my-100">
+			<div class="col-md-6">
+				<img src="{{ asset("build/images/projets/portfolio-agathe/entites.png") }}" alt="">
+				<p>Structure des entités du projet</p>
+			</div>
+			<div class="col-md-6">
+				<h2>Conception de la structure d'un projet</h2>
+				<p>En analysant les pages projets de la maquette, on remarque qu'un projet est scindé en plusieurs 'blocs', qui reviennent sur chaque projets. C'est à ce moment que j'ai décidé de la structure des projets dans le code de l'application. Chaque projet est découpé en plusieurs entités, conçues de manière à être 100% personnalisables.</p>
+				<p>La structure est la suivante :
+				</p>
+				<ul>
+					<li>Une classe
+						<code>Project</code>, qui représente le projet dans sa globalité. Elle contient les informations telles que son nom, sa description, son image de couverture etc.</li>
+					<li>Une classe
+						<code>Block</code>, générique, qui fait la relation entre les différents blocs disponibles pour la création du projet</li>
+					<li>Enfin, plusieurs classes
+						<code>*Type*Block</code>
+						(<code>ImageBlock</code>,
+						<code>TextBlock</code>...) représentent les différents blocs existants</li>
+				</ul>
+			</div>
+		</div>
+		<div class="text-block" style="padding-top: 0px">
+			<div class="title">
+				<h2>Conception du Back-office</h2>
+			</div>
+			<div class="content">
+				<p>Une fois les entités du projet crée, j'ai commencé à développer le back-office. J'ai décidé d'une mise en page simple (photo en dessous). Lorsque que l'on crée un projet, on renseigne le minimum d'information, et c'est lors de la modification, que l'on peut alors commencer à remplir le projet.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mt-100">
+		<div class="img-center my-100">
+			<img src="{{ asset("build/images/projets/portfolio-agathe/back-office.png")}}" alt="Back-office du portfolio de Agathe Verasdonck" class="w-100">
+			<p>Page de modification d'un projet</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row my-100">
+			<div class="col-md-6">
+				<img src="{{ asset("build/images/projets/portfolio-agathe/blockController.png") }}" alt="">
+			</div>
+			<div class="col-md-6 center-y">
+				<h2>Formulaire générique</h2>
+				<p>Pour me simplifier la tâche pendant le développement, j'ai souhaité utiliser une unique page pour la création des différent blocs. Pour ce faire, j'ai crée un controller (<code>BlockController</code>), qui utilise un
+					<code>switch</code>
+					pour déterminer le formulaire à utiliser en fonction d'un paramètre dans l'url.</p>
+				<p>Cependant, la conception m'oblige tout de même à devoir modifier ce controller à chaque ajout de bloc, ce qui n'est pas idéal.</p>
+			</div>
+			<div class="col-md-6">
+				<p>Code du controller
+					<code>BlockController</code>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>Vitesse et optimisations</h2>
+			</div>
+			<div class="content">
+				<p>Un beau site, c'est important. Un site rapide, ça l'est encore plus. Pour m'assurer que le portfolio le soit, tout un travail d'optimisation à du être mis en place. En effet, le site comporte énormément d'images de grande taille, qui doivent conserver une qualité optimale.</p>
+				<p>Pour ce faire, j'ai utilisé le bundle Symfony/UX-turbo : il permet l'intégration de la librairie Javascript
+					<a href="https://turbo.hotwired.dev/" target="_blank" rel="noopener noreferrer" class="simple-link">
+						<span>Turbo</span>
+					</a>, développé par Hotwire. Cette librairie permet de donner au site un feeling de Single Page Application (SPA) : Turbo écoute les clics sur les balises
+					<code>&lt;a&gt;</code>, les annule, et charge en arrière plan la page demandé via fetch. Une fois la page chargée, il remplace alors le corps de la page actuelle (balise
+					<code>body</code>) par celui qu'il vient de récupérer.</p>
+				<p>L'utilisation de Turbo permet donc de n'avoir qu'un seul chargement "complet" de la page, ce qui augmente les performances de manière significatives.</p>
+			</div>
+		</div>
+		<div class="text-block" style="margin-bottom: 0px">
+			<div class="title">
+				<h2>Mise en cache</h2>
+			</div>
+			<div class="content">
+				<p>Les pages projet provenant de la base de donnée, une perte de performances est à prévoir en comparaison à un site statique. Cependant, ce défaut est mitigé par l'utilisation de règles de cache efficaces dans le fichier
+					<code>.htaccess</code>, ainsi que le cache mis en place par Twig, le moteur de template utilisé par Symfony</p>
+			</div>
+		</div>
+
+		<img src="{{ asset("build/images/projets/portfolio-agathe/gtmetrix.png") }}" alt="Résultat du test GT Metrix sur une page projet provenant de la base de donnée" class="w-100 mt-100">
+		<p>Résultat du test GT Metrix sur une page projet provenant de la base de donnée</p>
+	</div>
+
+{% endblock %}

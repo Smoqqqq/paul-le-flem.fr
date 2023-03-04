@@ -1,0 +1,21 @@
+.text-scroll {
+    margin: $spacer 0px;
+    padding: $spacer 0px;
+    position: relative;
+    overflow: hidden;
+
+    .text {
+        position: absolute;
+        font-size: 100px;
+        white-space: nowrap;
+        transition: 100ms;
+
+        &:first-child {
+            top: 100px;
+        }
+
+        &:nth-child(2) {
+            top: 200px;
+        }
+    }
+}

@@ -1,18 +1,19 @@
 .text-block {
-    padding: $spacer * 1.78;
+    margin-top: $spacer;
+    margin-bottom: $spacer;
     display: flex;
     flex-direction: row; 
     justify-content: space-between;
-    align-items: center;
-    
-    &:not(:first-child) {
-        margin-top: $spacer;
+
+    &:first-child {
+        padding-top: 0px;
     }
-    
+
+    &:last-child {
+        padding-bottom: 0px;
+    }
+
     .title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         width: 30%;
 
         h2 {

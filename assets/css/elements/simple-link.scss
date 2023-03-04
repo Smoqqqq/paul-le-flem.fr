@@ -1,0 +1,75 @@
+.simple-link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+
+    span {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::after {
+        left: -2px;
+        top: calc(100% - 3px);
+        content: "";
+        background: $yellow;
+        height: 1px;
+        width: calc(100% + 4px);
+        transition: $transition;
+        position: absolute;
+    }
+
+    &:hover {
+        &::after {
+            height: calc(100% - 4px);
+            top: 2px;
+            opacity: 0.5;
+        }
+    }
+
+    &.yellow {
+        color: $yellow;
+
+        &::after {
+            background: white;
+        }
+
+        &:hover {
+            color: white;
+
+            &::after {
+                background: $yellow;
+            }
+        }
+    }
+}
+
+.alt-simple-link {
+    position: relative;
+    text-decoration: none;
+
+    span {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::after {
+        left: -2px;
+        height: calc(100% - 4px);
+        top: 1px;
+        content: "";
+        background: $yellow;
+        height: calc(100);
+        width: calc(100% + 4px);
+        transition: $transition;
+        position: absolute;
+        opacity: 0;
+    }
+
+    &:hover {
+        &::after {
+            background: $yellow;
+            opacity: 0.5;
+        }
+    }
+}

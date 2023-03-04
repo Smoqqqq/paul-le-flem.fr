@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: center;
     padding-top: calc($spacer + 55px);
-    padding-bottom: $spacer;
-    margin-bottom: $spacer;
+    padding-bottom: $spacer * 1.5;
+    padding-left: 140px;
+    padding-right: 140px;
 
     .project-title, .project-link {
         font-size: 25px;

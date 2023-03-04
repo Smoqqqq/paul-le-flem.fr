@@ -1,7 +1,14 @@
 .collab {
     position: relative;
     padding-bottom: calc($spacer * 2 + 70px);
-    margin-top: $spacer * 2;
+    margin-top: $spacer;
+    width: 100%;
+
+    img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
 
     .desc {
         position: absolute;
@@ -9,24 +16,34 @@
         font-size: 25px;
         right: 0px;
         width: calc(50% - $spacer);
+
+        img {
+            position: relative;
+            z-index: 2;
+        }
+
+        .alt-simple-link {
+            font-size: 25px;
+            color: $yellow;
+
+            &:hover {
+                span {
+                    color: white;
+                }
+            }
+        }
     }
 
     .left {
         width: calc(50% + $spacer / 2);
-
-        img {
-            width: 100%;
-        }
+        max-width: calc(50% + $spacer / 2);
     }
 
     .right {
         width: calc(50% + $spacer / 2);
+        max-width: calc(50% + $spacer / 2);
         position: absolute;
         top: calc($spacer + 70px);
         right: 0px;
-
-        img {
-            width: 100%;
-        }
     }
 }

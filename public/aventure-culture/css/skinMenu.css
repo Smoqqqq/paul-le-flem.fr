@@ -1,0 +1,89 @@
+#skin-menu {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+#skins {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 230px;
+    overflow-x: scroll;
+    position: relative;
+}
+
+#skin-menu #skins .skin {
+    width: 200px;
+    min-width: 200px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.skin img {
+    height: fit-content;
+    width: fit-content;
+}
+
+#skin-menu h1 {
+    color: white;
+}
+
+#skin-menu #skins p {
+    color: white;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+#sound-toggle {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    color: white;
+}
+
+#next-skin {
+    width: 30px;
+    height: 30px;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: fixed;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 5vw;
+    cursor: pointer;
+    user-select: none;
+}
+
+#prev-skin {
+    width: 30px;
+    height: 30px;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: fixed;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 5vw;
+    cursor: pointer;
+    user-select: none;
+}
