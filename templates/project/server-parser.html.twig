@@ -1,0 +1,120 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<div class="project-header">
+		<h2 class="project-title">Server parser - Système de gestion des serveurs et sites</h2>
+		<h1 class="project-main-title">Une manière simple de gérer vos serveurs</h1>
+		<a href="https://github.com/Smoqqqq/server-parser" class="project-link" target="_blank">github.com/Smoqqqq/server-parser</a>
+	</div>
+
+	<img src="{{ asset("build/images/projets/server-parser/paul_le_flem_accueil_server_parser.png") }}" alt="Mockup de l'application" class="header-mockup">
+
+	<div class="container mt-100">
+		<div class="text-block">
+			<div class="title">
+				<h2>Le contexte</h2>
+			</div>
+			<div class="content">
+				<p>Travaillant depuis maintenant plus de deux ans chez BH Internet (agence web spécialisée en référencement) en tant que développeur web, une des problématiques que nous avons rencontré (et les autres agences web également), est le suivi des sites internet. Comment garder trace du serveur hébergeant un site X ou Y ? Chez BH Internet, nous utilisons un fichier Excel. Le problème du fichier Excel, c'est qu'il ne se tient pas à jour tout seul et il est fréquent que l'on oublie de le modifier lorsqu'un site est mis en ligne ou déplacé d'un serveur à un autre.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>Origine du projet</h2>
+			</div>
+			<div class="content">
+				<p>Pour répondre au problème, j'ai réfléchit à la possibilité d'un logiciel autonome : plus besoin de rentrer manuellement les sites sur le fichier ; il s'actualise seul. Cependant, Excel ne propose pas cette fonctionnalité.</p>
+				<p>J'ai donc pris la décision de développer moi-même une application qui le ferait pour nous, que j'ai baptisé server parser, ce qui signifie "analyseur de serveur". J'ai développé cette application sur mon temps libre, comme projet personnel.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row skills">
+			<div class="col-md-4">
+				<h3>Technologies utilisées</h3>
+				<ul>
+					<li>Symfony 5.4</li>
+					<li>PHP 7.2</li>
+					<li>MySQL</li>
+					<li>Bootstrap</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Conditions de travail</h3>
+				<ul>
+					<li>Projet personnel</li>
+					<li>Développé en un mois</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Rôle</h3>
+				<ul>
+					<li>Conception technique</li>
+					<li>Développement</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block mt-100">
+			<div class="title">
+				<h2>Recherche de solution</h2>
+			</div>
+			<div class="content">
+				<p>Comment tenir cette liste à jour ? Je souhaitais que cela se fasse automatiquement, mais comment faire ?</p>
+				<p>Après réflexion, j'ai pensé à utiliser un client FTP. J'ai cherché des bibliothèques le proposant et en cherchant sur Packagist (le site référencant les librairies PHP disponibles via Composer), je suis tombé sur phpseclib. Cette librairie permet l'utilisation des protocoles FTP et surtout SFTP ! (et bien d'autres). C'est donc ce que j'ai choisit d'utiliser.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>Fonctionnement de l'application</h2>
+			</div>
+			<div class="content">
+				<p>L'idée est simple : lui fournir une liste de serveurs, comprenant leur nom, hôte, mot de passe et dossier raçine. L'application va ensuite, par elle même aller parcourir le serveur via le protocole SFTP (Secure File Transfert Protocol), puis se déplacer jusqu'au dossier raçine fournit, et récupérer la liste des sites présent sur le serveur. Cela permet de tenir à jour la liste des sites, et le serveur sur lequel ils sont hébergés a tout moment, sans effort.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset("build/images/projets/server-parser/paul_le_flem_server_read_server_parser.png") }}" alt="Mockup de l'application">
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Mise à jour de la base de donnée</h2>
+			</div>
+			<div class="content">
+				<p>L'application n'actualise pas par elle même la base. Je n'ai pas eu le temps de développer cette fonctionnalitée. Pour actualiser les serveurs, la manipulation est simple. Il suffit de se connecter au site, et de cliquer sur le bouton 'actualiser'. Cela aura pour effet de relancer la fonction qui visite le serveur, décrite précédemment.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>Système de groupes</h2>
+			</div>
+			<div class="content">
+				<p>Le groupe est un système mis en place sur l'application. Tout utilisateur à la possibilité de créer un groupe et d'y inviter d'autres utilisateurs. Lors de l'ajout d'un serveur / site à l'application, il est uniquement visible par son créateur. Pour utiliser l'application en entreprise ou avec des amis, il est nécessaire de créer un groupe pour partager les serveurs avec eux. Ainsi, il est possiblé de l'utiliser en entreprise, et également pour des projets personnels, sans avoir à partager ses identifiants avec ses collègues.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mt-100">
+		<div class="text-block">
+			<div class="title">
+				<h2>Sécurité</h2>
+			</div>
+			<div class="content">
+				<p>Les données présente sur l'application étant sensibles, j'ai donc pris les précautions de sécurité nécessaires. J'ai pour la première fois utilisé la librairie
+					<a href="https://github.com/paragonie/halite" class="simple-link" target="_blank" rel="noopener noreferrer">paragonie/halite</a>, une librairie open-source développée par Paragon Initiative Enterprises, qui permet le cryptage des entitées automatiquement lors de l'enregistrement via Doctrine. L'intégralité des données sont donc encrypté avec Halite, une interface de cryptage de haut niveau qui utilise libsodium, offrant un niveau de sécurité élevé.</p>
+				<p>De plus, les identifiants et données des serveurs sont floutés, de manière à pouvoir utiliser l'application dans les lieux publics sans risquer de dévoiler ses mots de passe.</p>
+			</div>
+		</div>
+		<img src="{{ asset("build/images/projets/server-parser/paul_le_flem_liste_serveurs_server_parser.png") }}" alt="Mockup de l'application">
+	</div>
+
+
+{% endblock %}

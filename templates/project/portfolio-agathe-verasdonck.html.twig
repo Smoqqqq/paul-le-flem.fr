@@ -7,7 +7,9 @@
 		<a href="https://agathe-verasdonck.fr" class="project-link" target="_blank">agathe-verasdonck.fr</a>
 	</div>
 
-	<img src="{{ asset("build/images/projets/portfolio-agathe/realisation_paul_le_flem_portfolio_agathe_verasdonck.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="w-100">
+	<div class="image-zoom">
+		<img src="{{ asset("build/images/projets/portfolio-agathe/realisation_paul_le_flem_portfolio_agathe_verasdonck.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="header-mockup">
+	</div>
 
 	<div class="container mt-100">
 		<div class="text-block">
@@ -15,7 +17,7 @@
 				<h2>LE CLIENT</h2>
 			</div>
 			<div class="content">
-				<p>Agathe Verasdonck est actuellement en dernière année de Bachelor Création Numérique et souhaite poursuivre ses études pour obtenir un Master dans le domaine de l'UI et UX Design. Elle est par conséquent en recherche active d'une école dans laquelle elle puisse effectuer ces deux dernières années d'études en alternance. Pour faciliter ses entretiens, elle souhaitait réaliser une refonte de son portfolios fin qu'il soit plus conforme aux attendus des écoles et des entreprises.</p>
+				<p>Agathe Verasdonck est actuellement en dernière année de Bachelor Création Numérique et souhaite poursuivre ses études pour obtenir un master dans le domaine de l'UI et UX design. Elle est par conséquent en recherche active d'une école dans laquelle elle puisse effectuer ces deux dernières années d'études en alternance. Pour faciliter ses entretiens, elle souhaitait réaliser une refonte de son portfolio afin qu'il soit plus conforme aux attendus des écoles et des entreprises.</p>
 			</div>
 		</div>
 		<div class="text-block">
@@ -23,7 +25,7 @@
 				<h2>CAHIER DES CHARGES</h2>
 			</div>
 			<div class="content">
-				<p>Agathe, UI / UX Designer, m'as transmit une maquette représentant le portfolio qu'elle souhaitait réaliser début décembre. À ce stade, la maquette n'était pas encore complète. Elle souhaitait une première version du site pour mi-janvier avec les éléments déjà présents sur la maquette. Elle désirait entre temps compléter la maquette et m'informer pour que je puisse réaliser des ajustements dans le temps. Frustrée de devoir constamment faire appel à mes services pour rentrer ses nouveaux projets, elle m'a demandé de créer un back-office (espace depuis lequel on peut ajouter / modifier des projets) afin de gagner en autonomie.
+				<p>Agathe, UI / UX Designer, m'as transmis une maquette représentant le portfolio qu'elle souhaitait réaliser début décembre. À ce stade, la maquette n'était pas encore complète. Elle souhaitait une première version du site pour mi-janvier avec les éléments déjà présents sur la maquette. Elle désirait entre-temps compléter la maquette et m'informer pour que je puisse réaliser des ajustements dans le temps. Frustrée de devoir constamment faire appel à mes services pour rentrer ses nouveaux projets, elle m'a demandé de créer un back-office (espace depuis lequel on peut ajouter / modifier des projets) afin de gagner en autonomie.
 				</p>
 			</div>
 		</div>
@@ -85,7 +87,7 @@
 				<h2>Analyse de la maquette</h2>
 			</div>
 			<div class="content">
-				<p>Dans un premier temps, j'ai commencé à analyser la maquette transmise par Agathe. Durant cette phase d'observation, j'ai commencé à imaginer de quelle manière et avec quelles technologies il serait plus à même de coder ce projet. J'ai également noté toutes mes interrogations pour en parler avec Agathe et comprendre exactement ses envies. La maquette étaient essentiellement composées de blocs de texte et d'images illustrants ces différents projets. Ainsi, nous avons établi que je rentrerai moi-même les projets qu'elle souhaite au fil du temps.</p>
+				<p>Dans un premier temps, j'ai commencé à analyser la maquette transmise par Agathe. Durant cette phase d'observation, j'ai commencé à imaginer de quelle manière et avec quelles technologies il serait plus à même de coder ce projet. J'ai également noté toutes mes interrogations pour en parler avec Agathe et comprendre exactement ses envies. La maquette était essentiellement composée de blocs de texte et d'images illustrant ces différents projets. Ainsi, nous avons établi que je rentrerai moi-même les projets qu'elle souhaite au fil du temps.</p>
 			</div>
 		</div>
 	</div>
@@ -102,13 +104,15 @@
 				<h2>Début du développement</h2>
 			</div>
 			<div class="content">
-				<p>La cliente souhaitant voir le site en ligne le plus tôt possible, j'ai donc commencé par créer quelque pages projets en "dur" : cela m'as permit de créer les différents blocs composant les pages avant de concevoir le back-office. De cette manière, de premiers ajustement ont pu être réalisés avant même son développement, ce qui à permit de gagner du temps, et d'éviter des erreurs de conception.</p>
+				<p>La cliente souhaitant voir le site en ligne le plus tôt possible, j'ai donc commencé par créer quelques pages projets en "dur" : cela m'as permis de créer les différents blocs composant les pages avant de concevoir le back-office. De cette manière, de premiers ajustements ont pu être réalisés avant même son développement, ce qui a permis de gagner du temps, et d'éviter des erreurs de conception.</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
-		<img src="{{ asset("build/images/projets/portfolio-agathe/nouveau_portfolio_agathe-verasdonck.png")}}" alt="Patchwork des pages du portfolio de Agathe Verasdonck">
+		<div class="image-zoom">
+			<img src="{{ asset("build/images/projets/portfolio-agathe/nouveau_portfolio_agathe-verasdonck.png")}}" alt="Patchwork des pages du portfolio de Agathe Verasdonck">
+		</div>
 	</div>
 
 	<div class="container">
@@ -116,10 +120,14 @@
 			<div class="title">
 				<h2>Responsive du site</h2>
 			</div>
-			<div class="content"></div>
+			<div class="content">
+				<p>Le site étant prévu pour le mobile-first, j'ai donc commencé le développement avec cette perspective en tête. J'ai donc utilisé bootstrap-grid, l'un des composants de la bibliothèque CSS Bootstrap. L'usage de cette librairie m'a permis de simplifier le passage en version responsive, grâce à son système de grille prédéfinit.</p>
+			</div>
 		</div>
 
-		<img src="{{ asset("build/images/projets/portfolio-agathe/paul_le_flem_responsive_portfolio_agathe_verasdonck.png") }}" alt="Responsive du portfolio">
+		<div class="image-zoom">
+			<img src="{{ asset("build/images/projets/portfolio-agathe/paul_le_flem_responsive_portfolio_agathe_verasdonck.png") }}" alt="Responsive du portfolio">
+		</div>
 	</div>
 
 	<div class="container mt-100">
@@ -128,7 +136,7 @@
 				<h2>Le problème</h2>
 			</div>
 			<div class="content">
-				<p>Une fois les premiers projets intégrés, Agathe a continué de mettre en page d'autres pages projets. Elle m'a par conséquent demandé de rentrer ses nouveaux projets comme nous en avions convenu. Cependant, nous avons tous les deux vite remarqué que cette méthode n'était pas pratique. En effet, de mon côté, il était difficile de dégager du temps pour pouvoir mettre à jour son portfolio quand elle souhaitait. Et de son côté, Agathe était bien embêtée de ne pas pouvoir être autonome et de devoir continuellement faire appel à mes services pour modifier ou ajouter ses projets.</p>
+				<p>Une fois les premiers projets intégrés, Agathe a continué de mettre en page d'autres pages projets. Elle m'a par conséquent demandé de rentrer ses nouveaux projets comme nous en avions convenu. Cependant, nous avons tous les deux vite remarqués que cette méthode n'était pas pratique. En effet, de mon côté, il était difficile de dégager du temps pour pouvoir mettre à jour son portfolio quand elle souhaitait. Et de son côté, Agathe était bien embêtée de ne pas pouvoir être autonome et de devoir continuellement faire appel à mes services pour modifier ou ajouter ses projets.</p>
 			</div>
 		</div>
 		<div class="text-block">
@@ -136,7 +144,7 @@
 				<h2>La solution</h2>
 			</div>
 			<div class="content">
-				<p>Après réflexion et analyse de la charge de travail, je lui ai proposé de créer un espace administrateur. Grâce à cet espace, elle pourrait intéragir avec la base de données de son portfolio et modifier ou ajouter ses projets comme bon lui semble, depuis une interface simple d'utilisation. Dans ce back-office, plusieurs blocs seraient mis à sa disposition, afin de correspondre à tous les blocs présents sur sa maquette. Ainsi, elle n'aurait qu'à choisir le bloc qu'elle désire et y copier coller son texte, ou joindre une image...</p>
+				<p>Après réflexion et analyse de la charge de travail, je lui ai proposé de créer un espace administrateur. Grâce à cet espace, elle pourrait interagir avec la base de données de son portfolio et modifier ou ajouter ses projets comme bon lui semble, depuis une interface simple d'utilisation. Dans ce back-office, plusieurs blocs seraient mis à sa disposition, afin de correspondre à tous les blocs présents sur sa maquette. Ainsi, elle n'aurait qu'à choisir le bloc qu'elle désire et y copier coller son texte, ou joindre une image...</p>
 			</div>
 		</div>
 	</div>
@@ -153,7 +161,7 @@
 			</div>
 			<div class="content">
 				<h2>Conception de la structure d'un projet</h2>
-				<p>En analysant les pages projets de la maquette, on remarque qu'un projet est scindé en plusieurs 'blocs', qui reviennent sur chaque projets. C'est à ce moment que j'ai décidé de la structure des projets dans le code de l'application. Chaque projet est découpé en plusieurs entités, conçues de manière à être 100% personnalisables.</p>
+				<p>En analysant les pages projets de la maquette, on remarque qu'ils sont scindés en plusieurs "blocs", qui reviennent sur chacun d'eux. C'est à ce moment que j'ai décidé de la structure dans le code de l'application. Chaque projet est découpé en plusieurs entités, conçues de manière à être entièrement personnalisables.</p>
 				<p>La structure est la suivante :
 				</p>
 				<ul>
@@ -174,7 +182,7 @@
 				<h2>Conception du Back-office</h2>
 			</div>
 			<div class="content">
-				<p>Une fois les entités du projet crée, j'ai commencé à développer le back-office. J'ai décidé d'une mise en page simple (photo en dessous). Lorsque que l'on crée un projet, on renseigne le minimum d'information, et c'est lors de la modification, que l'on peut alors commencer à remplir le projet.</p>
+				<p>Une fois les entités du projet crée, j'ai commencé à développer le back-office. J'ai décidé d'une mise en page simple (photo en dessous). Lorsque l'on crée un projet, on renseigne le minimum d'information, et c'est lors de la modification, que l'on peut alors commencer à remplir le projet.</p>
 			</div>
 		</div>
 
@@ -186,7 +194,7 @@
 				<h2>Formulaire générique</h2>
 			</div>
 			<div class="content">
-				<p>Pour me simplifier la tâche pendant le développement, j'ai souhaité utiliser une unique page pour la création des différent blocs. Pour ce faire, j'ai crée un controller (<code>BlockController</code>), qui utilise un
+				<p>Pour me simplifier la tâche pendant le développement, j'ai souhaité utiliser une unique page pour la création des différents blocs. Pour ce faire, j'ai créé un controller (<code>BlockController</code>), qui utilise un
 					<code>switch</code>
 					pour déterminer le formulaire à utiliser en fonction d'un paramètre dans l'url.</p>
 				<p>Cependant, la conception m'oblige tout de même à devoir modifier ce controller à chaque ajout de bloc, ce qui n'est pas idéal.</p>
@@ -205,14 +213,14 @@
 				<h2>Vitesse et optimisations</h2>
 			</div>
 			<div class="content">
-				<p>Un beau site, c'est important. Un site rapide, ça l'est encore plus. Pour m'assurer que le portfolio le soit, tout un travail d'optimisation à du être mis en place. En effet, le site comporte énormément d'images de grande taille, qui doivent conserver une qualité optimale.</p>
+				<p>Un beau site, c'est important. Un site rapide, ça l'est encore plus. Pour m'assurer que le portfolio le soit, tout un travail d'optimisation à dû être mis en place. En effet, le site comporte énormément d'images de grande taille, qui doivent conserver une qualité optimale.</p>
 				<p>Pour ce faire, j'ai utilisé le bundle Symfony/UX-turbo : il permet l'intégration de la librairie Javascript
 					<a href="https://turbo.hotwired.dev/" target="_blank" rel="noopener noreferrer" class="simple-link">
 						<span>Turbo</span>
 					</a>, développé par Hotwire. Cette librairie permet de donner au site un feeling de Single Page Application (SPA) : Turbo écoute les clics sur les balises
-					<code>&lt;a&gt;</code>, les annule, et charge en arrière plan la page demandé via fetch. Une fois la page chargée, il remplace alors le corps de la page actuelle (balise
+					<code>&lt;a&gt;</code>, les annule, et charge en arrière-plan la page demandée via fetch. Une fois la page chargée, il remplace alors le corps de la page actuelle (balise
 					<code>body</code>) par celui qu'il vient de récupérer.</p>
-				<p>L'utilisation de Turbo permet donc de n'avoir qu'un seul chargement "complet" de la page, ce qui augmente les performances de manière significatives.</p>
+				<p>L'utilisation de Turbo permet donc de n'avoir qu'un seul chargement "complet" de la page, ce qui augmente les performances de manière significative.</p>
 			</div>
 		</div>
 
@@ -221,7 +229,7 @@
 				<h2>Mise en cache</h2>
 			</div>
 			<div class="content">
-				<p>Les pages projet provenant de la base de donnée, une perte de performances est à prévoir en comparaison à un site statique. Cependant, ce défaut est mitigé par l'utilisation de règles de cache efficaces dans le fichier
+				<p>Les pages projet provenant de la base de données, une perte de performances est à prévoir en comparaison à un site statique. Cependant, ce défaut est mitigé par l'utilisation de règles de cache efficace dans le fichier
 					<code>.htaccess</code>, ainsi que le cache mis en place par Twig, le moteur de template utilisé par Symfony</p>
 			</div>
 		</div>
@@ -231,7 +239,7 @@
 	</div>
 
 	<div class="container">
-		<div class="quote">Un grand merci à Paul pour le travail fourni ! le rendu est impeccable, je n'aurais pas espéré mieux. Paul à su répondre à toutes mes demandes et ce dans un temps record !</div>
+		<div class="quote">Un grand merci à Paul pour le travail fourni ! le rendu est impeccable, je n'aurais pas espéré mieux. Paul a su répondre à toutes mes demandes et ce dans un temps record !</div>
 	</div>
 
 	<div class="container">
@@ -239,13 +247,20 @@
 			<div class="title">
 				<h2>Difficultés rencontrés</h2>
 			</div>
-			<div class="content"></div>
+			<div class="content">
+				<p>Durant la conception du site, la plus grande difficulté était d'allier un back-office intuitif et simple d'utilisation, avec un front-end rapide, qui incite l'utilisateur final à rester sur le site et découvrir les projets. Il était nécessaire pour cela d'optimiser le fonctionnement du site, et le format des visuels affichés.</p>
+			</div>
 		</div>
 		<div class="text-block">
 			<div class="title">
 				<h2>Ce que j'en retiens</h2>
 			</div>
-			<div class="content"></div>
+			<div class="content">
+				<ul>
+					<li>La bibliothèque Turbo, qui est un excellent outil tant au niveau de la rapidité du site, que de l'expérience utilisateur avec le feeling de single page application (SPA)</li>
+					<li>Il est possible d'avoir un site à la fois dynamique et rapide, malgré que le contenu provienne de la base de données, grâce à une bonne optimisation et des règles de caches efficaces.</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 

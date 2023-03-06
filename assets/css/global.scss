@@ -14,10 +14,16 @@ h2 {
     font-size: 25px;
     text-transform: uppercase;
     color: $text-color;
+    letter-spacing: 1px;
+}
+
+h3 {
+    letter-spacing: 1px;
 }
 
 h2.large {
-    font-size: 100px;;
+    font-size: 5vw;
+    letter-spacing: auto;
 }
 
 .text-center {
@@ -33,7 +39,11 @@ h2.large {
 }
 
 .container {
-    padding: 0px 278px;
+    padding: 0px 7vw;
+}
+
+.container-large {
+    padding: 0px 7vw;
 }
 
 ::selection {
@@ -46,7 +56,8 @@ p,
 ul,
 li {
     font-size: 18px;
-    line-height: 30px;
+    line-height: 35px;
+    letter-spacing: 1px;
 }
 
 ul {
@@ -77,6 +88,10 @@ ul {
 
 .mt-100 {
     margin-top: $spacer;
+
+    @media (max-width: $mobile) {
+        margin-top: calc($spacer / 2);
+    }
 }
 
 code {
@@ -149,6 +164,10 @@ code {
         background: white;
         position: absolute;
     }
+
+    @media (max-width: $mobile) {
+        padding: calc($spacer / 2) 0px;
+    }
 }
 
 video {
@@ -157,4 +176,12 @@ video {
 
 img {
     width: 100%;
+}
+
+.image-zoom {
+    overflow: hidden;
+
+    img {
+        transition: $transition;
+    }
 }

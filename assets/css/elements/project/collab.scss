@@ -32,6 +32,24 @@
                 }
             }
         }
+
+        @media (max-width: $mobile) {
+            font-size: 18px;
+            top: calc($spacer / 4);
+            top: 0px;
+            left: 0px;
+            width: 100%;
+
+            .alt-simple-link {
+                font-size: 18px;
+            }
+
+            @media (max-width: 450px) {
+                .alt-simple-link {
+                    display: block;
+                }
+            }
+        }
     }
 
     .left {
@@ -45,5 +63,14 @@
         position: absolute;
         top: calc($spacer + 70px);
         right: 0px;
+    }
+
+    @media (max-width: $mobile) {
+        padding-top: 85px;
+        padding-bottom: $spacer + 70px;
+    }
+
+    @media (max-width: 450px) {
+        padding-top: 110px;
     }
 }

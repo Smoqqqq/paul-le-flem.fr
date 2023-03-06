@@ -1,9 +1,16 @@
 <nav id="navbar">
 	<a href="{{ path("app_home") }}" class="nav-link" style="margin-left: 0px">Paul Le Flem</a>
-	<div class="text-end">
-		<a class="cursor_opacity_trigger" href="">À propos</a>
-		<a class="cursor_opacity_trigger" href="">Projets</a>
-		<a class="cursor_opacity_trigger" href="">Contact</a>
-		<a class="cursor_opacity_trigger" href="" style="margin-right: 0px">Blog</a>
+
+	<div id="navbar-toggle" onclick="document.getElementById('navbar').classList.toggle('open')">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	<div id="navbar-nav">
+		{# <a class="cursor_opacity_trigger" href="">À propos</a> #}
+		<a class="cursor_opacity_trigger" href="{{ path("app_home") }}#project-grid">Projets</a>
+		<a class="cursor_opacity_trigger" href="{{ path("app_home") }}#footer">Contact</a>
+		{# <a class="cursor_opacity_trigger" href="">Blog</a> #}
 	</div>
 </nav>

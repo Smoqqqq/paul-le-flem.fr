@@ -10,4 +10,8 @@
         text-align: center;
         color: $text-color;
     }
+
+    @media (max-width: $mobile) {
+        margin-top: 65px;
+    }
 }

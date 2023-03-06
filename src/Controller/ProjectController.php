@@ -20,6 +20,12 @@ class ProjectController extends AbstractController
         return $this->render('project/aximonial.html.twig');
     }
 
+    #[Route('/projet/server-parser', name: 'app_project_server_parser')]
+    public function serverParser(): Response
+    {
+        return $this->render('project/server-parser.html.twig');
+    }
+
     #[Route('/projet/aventure-culture', name: 'app_project_aventure_culture')]
     public function aventureCulture(): Response
     {

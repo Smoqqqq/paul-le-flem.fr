@@ -2,11 +2,11 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    padding: 15px 140px;
+    padding: 15px 7vw;
     position: fixed;
     left: 0px;
     top: 0px;
-    width: calc(100% - $spacer * 2.8);
+    width: calc(100% - 14vw);
     background: $theme;
     z-index: 99;
 
@@ -15,7 +15,7 @@
         text-decoration: none;
         position: relative;
         margin: 0px 15px;
-        z-index: 99999;
+        z-index: 99;
 
         &.active {
             color: $yellow;
@@ -35,6 +35,88 @@
         &:hover {
             &::after {
                 width: 100%;
+            }
+        }
+    }
+
+    #navbar-nav {
+        text-align: right;
+
+        @media (min-width: $mobile) {
+            a{
+                &:last-child {
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+
+    #navbar-toggle {
+        display: none;
+    }
+
+    @media (max-width: $mobile) {
+
+        #navbar-toggle {
+            display: block;
+            position: fixed;
+            top: 16px;
+            right: 7vw;
+            z-index: 99999;
+
+            div {
+                margin: 7px;
+                margin-right: 0px;
+                height: 2px;
+                width: 30px;
+                background: $yellow;
+            }
+        }
+
+        #navbar-nav {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100vh;
+            transform: translateY(-100%);
+            transition: $transition;
+            text-align: left;
+            z-index: -1;
+            background: $yellow;
+            width: 100%;
+            padding: 7vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px;
+            z-index: 9999;
+
+            a {
+                display: block;
+                margin: 15px auto;
+                color: $theme;
+
+                &:first-child {
+                    margin-top: 0px;
+                }
+
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+
+        &.open {
+            background: $yellow;
+
+            #navbar-nav {
+                transform: translateY(0px);
+            }
+
+            #navbar-toggle {
+                div {
+                    background: $theme;
+                }
             }
         }
     }

@@ -25,7 +25,9 @@ class TextScroll {
             this.texts[i].elem.innerHTML += this.texts[i].textContent.replaceAll(" ", "&nbsp;");
         }
 
-        this.root.style.height = this.texts.length * 100 + "px";
+        let height = innerWidth > 992 ? 100 : 48;
+
+        this.root.style.height = this.texts.length * height + "px";
     }
 
     initAnimation() {
@@ -35,7 +37,7 @@ class TextScroll {
     }
 
     animate() {
-        this.offset += 5;
+        this.offset += 2;
 
         this.texts.forEach(text => {
             if (text.direction === "left") {

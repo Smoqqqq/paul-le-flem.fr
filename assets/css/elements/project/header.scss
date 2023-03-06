@@ -4,13 +4,18 @@
     justify-content: center;
     padding-top: calc($spacer + 55px);
     padding-bottom: $spacer * 1.5;
-    padding-left: 140px;
-    padding-right: 140px;
+    padding-left: 7vw;
+    padding-right: 7vw;
 
-    .project-title, .project-link {
+    .project-title,
+    .project-link {
         font-size: 25px;
         color: $text-color;
         margin: 0px;
+
+        @media (max-width: $mobile) {
+            font-size: 20px;
+        }
     }
 
     .project-title {
@@ -18,9 +23,22 @@
     }
 
     .project-main-title {
-        margin: 100px 0px;
-        font-size: 100px;
+        margin: 5vw 0px;
+        font-size: $spacer;
         color: white;
         text-transform: uppercase;
+
+        @media (max-width: $mobile) {
+            font-size: 40px;
+        }
     }
+
+    @media (max-width: $mobile) {
+        padding-top: calc($spacer / 2 + 65px);
+        padding-bottom: calc($spacer / 2);
+    }
+}
+
+.header-mockup {
+    background: #ececec;
 }

@@ -11,6 +11,8 @@ import '../css/index.scss';
 // start the Stimulus application
 import '../bootstrap';
 import TextScroll from './text-scroll';
+import TextBlockAnimation from "./text-block-animation";
+import ImageZoomAnimation from './image-zoom-animation';
 
 addEventListener("turbo:load", () => {
     const cursor = document.getElementById('cursor');
@@ -47,4 +49,43 @@ addEventListener("turbo:load", () => {
     for (let i = 0; i < textScrolls.length; i++) {
         new TextScroll(textScrolls[i]);
     }
+
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let target = document.querySelector("#" + this.getAttribute('href').split("#")[1]);
+
+            document.getElementById("navbar").classList.remove("open");
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: "start"
+                });
+            } else {
+                Turbo.visit(anchor.getAttribute("href").split("#")[0]);
+
+                function navigateToAnchor() {
+                    let target = document.querySelector("#" + this.getAttribute('href').split("#")[1]);
+
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: "start"
+                        });
+                    }
+
+                    removeEventListener("turbo:load", navigateToAnchor);
+                }
+
+                navigateToAnchor = navigateToAnchor.bind(this);
+
+                addEventListener("turbo:load", navigateToAnchor);
+            }
+        });
+    });
+
+    new TextBlockAnimation();
+    new ImageZoomAnimation();
 })

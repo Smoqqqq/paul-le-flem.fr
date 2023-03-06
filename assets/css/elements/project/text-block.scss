@@ -29,4 +29,18 @@
             margin-bottom: 0px;
         }
     }
+
+    @media (max-width: $mobile) {
+        flex-direction: column;
+        margin-top: calc($spacer / 2);
+        margin-bottom: calc($spacer / 2);
+
+        .title {
+            width: 100%;
+        }
+
+        .content {
+            width: 100%;
+        }
+    }
 }

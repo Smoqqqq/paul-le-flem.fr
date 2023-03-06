@@ -20,9 +20,13 @@
     }
 
     &.hovering-opacity {
-        width: 100px;
-        height: 100px;
+        width: $spacer;
+        height: $spacer;
         font-size: 30px;
         opacity: 0.2;
+    }
+
+    @media (max-width: $mobile) {
+        display: none;
     }
 }
