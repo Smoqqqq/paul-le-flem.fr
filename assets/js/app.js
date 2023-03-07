@@ -129,9 +129,9 @@ function animateLoader() {
 
             setTimeout(() => {
                 loader.classList.remove("visible");
-            }, 500)
-        }, 500)
-    }, 500);
+            }, 400)
+        }, 400)
+    }, 400);
 }
 
 function animateOutLoader() {
@@ -146,5 +146,5 @@ addEventListener("turbo:click", (e) => {
 
     setTimeout(() => {
         Turbo.visit(e.detail.url);
-    }, 500)
+    }, 400)
 })

@@ -24,6 +24,10 @@ h3 {
 h2.large {
     font-size: 5vw;
     letter-spacing: auto;
+
+    @media (max-width: $mobile) {
+        font-size: 9vw;
+    }
 }
 
 .text-center {
@@ -204,5 +208,15 @@ img {
 
     img {
         transition: $transition;
+    }
+}
+
+.blog-preview {
+    h2 {
+        margin-top: 0px;
+    }
+    
+    @media (max-width: $mobile) {
+        margin: 0px -15px;
     }
 }
