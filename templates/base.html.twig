@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<title>
 			{% block title %}{% endblock %}
 			| Paul Le Flem
 		</title>
+		<meta name="description" content="{% block description %}{% endblock %}">
 		<link rel="icon" href="{{ asset("build/images/favicon_portfolio_paul_le_flem.png") }}">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-		href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -20,6 +16,10 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 	</head>
 	<body>
 

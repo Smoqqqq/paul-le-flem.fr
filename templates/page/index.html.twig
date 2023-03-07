@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue sur mon portfolio !
+{% block title %}
+	Bienvenue sur mon portfolio
+{% endblock %}
+
+{% block description %}
+	Développeur web spécialisé en PHP et Symfony, je vous présente mes plus beaux projets avec un maximum de details !
 {% endblock %}
 
 {% block content %}
@@ -11,7 +16,7 @@
 	</header>
 
 	<div class="image-zoom">
-		<img src="{{ asset("build/images/patchwork_images_paul_le_flem.png") }}" alt="Patchwork d'images des sites que j'ai réalisé" id="patchwork">
+		<img srcset="{{ asset("build/images/patchwork_images_paul_le_flem.webp") }} 1800w {{ asset("build/images/patchwork_images_paul_le_flem-1400.webp") }} 1400w {{ asset("build/images/patchwork_images_paul_le_flem-900.webp") }} 900w" sizes="(max-width: 1500px) 1400px, (max-width: 1000px) 900px, 1800px" src="{{ asset("build/images/patchwork_images_paul_le_flem.webp") }}" alt="Patchwork d'images des sites que j'ai réalisé" id="patchwork">
 	</div>
 
 	<div id="a-propos"></div>
@@ -41,9 +46,14 @@
 					<h3>Paul Le Flem</h3>
 					<h3>Développeur full-stack</h3>
 				</div>
-				<img src="{{ asset("build/images/paul_le_flem_miniature.png") }}" id="image">
+				<img src="{{ asset("build/images/paul_le_flem_miniature.png") }}" id="image" alt="Photo de Paul Le Flem">
 			</div>
 		</div>
+	</div>
+
+	<div class="text-scroll">
+		<div class="text" data-direction="left" data-text-content="PHP          JAVASCRIPT          SYMFONY          MYSQL          DOCTRINE          PLATFORM.SH          RUST          HTML          SCSS          CI / CD          GITHUB          TURBO          SENTRY          JAVA"></div>
+		<div class="text" data-direction="right" data-text-content="PHP          JAVASCRIPT          SYMFONY          MYSQL          DOCTRINE          PLATFORM.SH          RUST          HTML          SCSS          CI / CD          GITHUB          TURBO          SENTRY          JAVA"></div>
 	</div>
 
 	<div id="project-grid"></div>
@@ -89,6 +99,20 @@
 					2023
 				</div>
 			</a>
+
+			<a href="{{ path("app_project_aximonial") }}" class="project-preview cursor_trigger">
+				<img src="{{ asset("build/images/projets/aximonial/cover.jpg") }}" alt="Image de couverture Aximonial" class="preview"/>
+				<div class="project-title">
+					Site catalogue
+				</div>
+				<div class="project-name">
+					Aximonial
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</a>
+
 			<div class="project-preview cursor_soon_trigger">
 				<img src="{{ asset("build/images/projets/un-jeune-une-alternance/cover.jpg") }}" alt="Image de couverture Un jeune une alternance" class="preview"/>
 				<div class="project-title">
@@ -129,19 +153,6 @@
 			</div>
 
 			<div class="project-preview cursor_soon_trigger">
-				<img src="{{ asset("build/images/projets/aximonial/cover.jpg") }}" alt="Image de couverture Aximonial" class="preview"/>
-				<div class="project-title">
-					Site catalogue
-				</div>
-				<div class="project-name">
-					Aximonial
-				</div>
-				<div class="project-date">
-					2022
-				</div>
-			</div>
-
-			<div class="project-preview cursor_soon_trigger">
 				<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_cover_esp.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
 				<div class="project-title">
 					Site catalogue
@@ -155,6 +166,12 @@
 			</div>
 
 		</div>
+	</div>
+
+	<div id="blog"></div>
+
+	<div class="container">
+		{% include "blog/search.html.twig" %}
 	</div>
 
 {% endblock %}

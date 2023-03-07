@@ -14,14 +14,14 @@ import TextScroll from './text-scroll';
 import TextBlockAnimation from "./text-block-animation";
 import ImageZoomAnimation from './image-zoom-animation';
 
-addEventListener("turbo:load", () => {
+window.addEventListener("turbo:load", () => {
 
     animateLoader();
 
     const cursor = document.getElementById('cursor');
     const cursor_triggers = document.getElementsByClassName("cursor_trigger");
     const cursor_soon_triggers = document.getElementsByClassName("cursor_soon_trigger");
-    const cursor_opacity_triggers = document.getElementsByClassName("cursor_opacity_trigger");
+    const cursor_opacity_triggers = document.querySelectorAll(".cursor_opacity_trigger, .simple-link");
 
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = String(e.x + "px");

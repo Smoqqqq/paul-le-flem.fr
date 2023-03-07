@@ -1,0 +1,109 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Comment améliorer l'expérience utilisateur d'un site en Symfony
+{% endblock %}
+
+{% block description %}
+	Découvrez comment j'accélère mes sites en Symfony et améliore leur expérience utilisateur
+{% endblock %}
+
+{% block content %}
+
+	<div class="project-header">
+		<h1 class="project-main-title">Améliorer l'experience utilisateur sur votre site Symfony</h1>
+	</div>
+
+	<div class="container">
+
+		<p>Dans cet article je vous explique comment j'améliore l'expérience utilisateur sur les sites que je développe en Symfony. J'explique plusieurs moyens de l'améliorer à différents niveaux.</p>
+		<p>Ces conseils fonctionnent également pour un site écrit en PHP pure, ou en n'importe quelle autre technologie du web. Cependant, je n'expliquerais que la partie liée à Symfony.</p>
+
+		<div class="mt-100"></div>
+		<h2>Optimisation de la vitesse du site</h2>
+		<p>Un site rapide est primordial, car les visiteurs n'hésitent pas à le quitter s'il prend trop longtemps à charger. Et s'il reste, il peut rapidement devenir frustré.</p>
+		<p>Il faut donc prendre soin d'envoyer le minimum de données au chargement de la page, et cela passe par les moyens suivant :</p>
+
+		<div class="mt-100"></div>
+		<h3>Compresser et redimensionner les images</h3>
+		<p>J'utilise le site iloveimg pour redimensionner les images des sites à la taille d'affichage, puis les compresses. Cela permet généralement d'économiser entre 30 et 70 pourcents du poids de l'image. Les vidéos elles aussi doivent être compressées au maximum, car c'est l'élément le plus lourd que l'on peut trouver sur un site.</p>
+
+		<div class="mt-100"></div>
+		<h3>Réduire le Javascript et CSS inutilisé</h3>
+		<p>Certains sites contiennent beaucoup de CSS ou Javascript inutilisée. Que ce soit une dépendance utilisé plus tôt mais abandonnée pour une autre, une police qui à changé, ou du style qui a été écrasé par une autre définition dans le css, il utilise une partie de la connexion pour se télécharger, et ralentis ainsi votre site.</p>
+
+		<div class="mt-100"></div>
+		<h3>Lazy loading</h3>
+		<p>Le lazy-loading est le principe de ne pas charger les éléments en dessous du viewport au chargement initial. Il peut être intéressant l'ajouter un attribut
+			<code class="language-html hljs">loading="lazy"</code>
+			à une balise img par exemple, pour en diférrer le chargement.</p>
+		<p>Parfois, comme pour une vidéo youtube, il est nécessaire d'écrire un peu de Javascript qui va créer l'iframe au chargement de la page :</p>
+
+		<pre>
+		<code class="language-javascript hljs">window.addEventListener("DOMContentLoaded", () => {
+	const src = "https://example.com/";
+	let frame = document.createElement("iframe");
+	frame.setAttribute("src", src);
+	document.body.appendChild(frame);
+})</code>
+		</pre>
+		<p>De cette manière, votre page chargera plus rapidement, et la vidéo sera chargée plus tard, quand le reste de la page sera entièrement chargé.</p>
+
+		<div class="mt-100"></div>
+		<h3>Configurer le cache du serveur web</h3>
+		<p>Le cache du serveur permet une plus grande rapidité d'accès aux données. Il est important d'utiliser des règles adaptées. Selon le serveur utilisé (Apache, Nginx...), les règles sont différentes, mais peuvent facilement être trouvé sur internet.</p>
+
+		<div class="mt-100"></div>
+
+		<h2>Utiliser des loaders</h2>
+		<p>Que ce soit une requête Ajax, un chargement de page avec Turbo Drive ou autres, un loader peut réduire la sensation d'attente, et ainsi rendre la navigation plus fluide.</p>
+		<p>En plus d'améliorer l'expérience, un loader est facile à installer, il suffit d'afficher / cacher un gif !</p>
+
+		<div class="mt-100"></div>
+		<h2>Turbo</h2>
+
+		<p>Un moyen pratique et efficace d'améliorer l'expérience utilisateur d'un site Symfony est d'utiliser
+			<a href="https://turbo.hotwired.dev/" class="simple-link" rel="noopener noreferrer" target="_blank">Turbo</a>. Développé par Hotwire, la librairie permet notamment de donner au site un feeling de Single Page Application (SPA) : Turbo Drive écoute les clics sur les balises
+			<code>&lt;a&gt;</code>, les annule, et charge en arrière-plan la page demandée via fetch. Une fois la page chargée, il remplace alors le corps de la page actuelle (balise
+			<code>body</code>) par celui qu'il vient de récupérer.</p>
+
+		<p>Turbo Drive n'est que l'un des composants de Turbo. Je n'en parlerais pas, mais Turbo permet également de décomposer les pages en "Frames" avec Turbo Frames, de streamer du contenu avec Turbo Stream
+		</p>
+
+		<p>Le site ressemble à un site conçu en React par exemple, car Turbo Drive permet de n'avoir qu'un unique chargement de page complet.</p>
+
+		<p>L'avantage principal de Turbo Drive, c'est son utilisation : il existe un bundle Symfony,
+			<a href="https://symfony.com/bundles/ux-turbo/current/index.html" target="_blank" rel="noopener noreferrer" class="simple-link">Symfony UX Turbo</a>. Ce bundle permet tout simplement d'utiliser Turbo Drive en une seule commande :</p>
+
+		<pre>
+			<code class="language-bash hljs">composer require symfony/ux-turbo</code>
+		</pre>
+
+		<p>Voilà, c'est fait. Allez sur votre site, maintenant la navigation est plus rapide, et ne génère plus de chargement complet de la page !</p>
+		<p>Turbo Drive propose également un système de cache, activé par défaut. Il permet une navigation quasi instantanée si vous avez déjà visité une page. Il est également accessible dans votre code via l'objet
+			<code>Turbo.cache</code>, pour une utilisation plus avancée.</p>
+
+		<p>Cependant, si votre site utilise du Javascript, vous remarquerez rapidement qu'après un chargement de page, plus rien ne fonctionne.</p>
+		<p>Pas de panique, la solution est très simple : il suffit d'entourer votre code Javascript dans un event listener :</p>
+
+		<pre>
+			<code class="language-javascript hljs">window.addEventListener("turbo:load", () => { /* votre code Javascript */ })</code>
+		</pre>
+
+		<p>Grace à cet évènement, votre code sera relancé à chaque chargement de page, comme si elle chargeait normalement.</p>
+
+		<div class="mt-100"></div>
+		<h2>Pour conclure</h2>
+		<p>Turbo est une excellente librairie Javascript que je recommande largement. Elle propose des améliorations litéralement gratuites, et, via les autres librairie d'excellentes fonctionnalité en terme d'expérience et de rapidité.</p>
+		<p>Je l'ai découvert récemment, et l'utilise désormais pour mes nouveaux projets !</p>
+
+	</div>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" integrity="sha512-y9FANphufav/MTLC4rIuhPP8EQOxWZcDPJYMHavSGjRsT7isO1YIVRIQxLXycWZfjdcjdxset4At0jPKszJeAw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script>
+		hljs.highlightAll();
+	</script>
+
+{% endblock %}

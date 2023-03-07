@@ -1,15 +1,23 @@
 {% extends "base.html.twig" %}
 
+{% block title %}
+	Découvrez mon travail sur le site aximonial.fr
+{% endblock %}
+
+{% block description %}
+	Design, conception d'un back-office, optimisation et développement du site, découvrez comment j'ai conçu ce site catalogue !
+{% endblock %}
+
 {% block content %}
-	<div class="container">
-		<div class="project-header">
-			<h2 class="project-title">Aximonial - site catalogue</h2>
-			<h1 class="project-main-title">Un véritable catalogue de biens immobiliers</h1>
-			<a href="https://agathe-verasdonck.fr" class="project-link" target="_blank">agathe-verasdonck.fr</a>
-		</div>
+	<div class="project-header">
+		<h2 class="project-title">Aximonial - site catalogue</h2>
+		<h1 class="project-main-title">Un catalogue pour leur biens immobiliers</h1>
+		<a href="https://aximonial.fr" class="project-link" target="_blank">aximonial.fr</a>
 	</div>
 
-	<img src="{{ asset("build/images/projets/portfolio-agathe/realisation_paul_le_flem_portfolio_agathe_verasdonck.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="w-100">
+	<div class="image-zoom">
+		<img src="{{ asset("build/images/projets/aximonial/paul_le_flem_accueil_projet_aximonial.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="w-100 header-mockup">
+	</div>
 
 	<div class="container mt-100">
 		<div class="text-block">
@@ -25,13 +33,13 @@
 				<h2>CAHIER DES CHARGES</h2>
 			</div>
 			<div class="content">
-				<p>Souhaitant digitaliser ses activité, l'entreprise à fait appel à BH Internet pour la conception de leur nouveau site internet. Le site à deux objectifs : offrir de la visibilité à l'entreprise, et augmenter le nombre de client potentiel. Il à été demandé la conception d'un back-office permettant la gestion des biens immobiliers, ainsi qu'une partie blog.</p>
+				<p>Souhaitant digitaliser ses activités, l'entreprise a fait appel à BH Internet pour la conception de leur nouveau site internet. Le site à deux objectifs : offrir de la visibilité à l'entreprise, et augmenter le nombre de clients potentiels. Il a été demandé la conception d'un back-office permettant la gestion des biens immobiliers, ainsi qu'une partie blog.</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="row">
+		<div class="row skills">
 			<div class="col-md-4">
 				<h3>Technologies utilisées</h3>
 				<ul>
@@ -61,119 +69,70 @@
 	</div>
 
 	<div class="container">
-		<img src="{{ asset("build/images/projets/portfolio-agathe/ancien_portfolio_agathe_paul_le_flem.png")}}" alt="Patchwork des pages de l'ancien portfolio de Agathe Verasdonck" class="w-100 my-100">
-	</div>
-
-	<div class="container">
 		<div class="text-block">
 			<div class="title">
-				<h2>Conception du front-end</h2>
+				<h2>Développement du front-end</h2>
 			</div>
 			<div class="content">
-				<p>Après qu'Agathe ait formulé cette demande de création d'un back-office, j'ai donc commencé par préparer la conception du projet. J'ai commencé par aller regarder la maquette en détail, de manière à pouvoir développer le système en fonction de ses besoins. Après un échange, nous avons décidés que seul les projets serait administrables, car ce sont eux qui seront amené à être ajouter au fil du temps. Les autres éléments (page à propos, accueil), de par leur relative simplicitée, ne nécessitent pas d'êtres administrables.</p>
+				<p>Aximonial.fr étant principalement une vitrine, j'ai commencé par développer la partie front-end. Le site utilise Bootstrap, et le css est compilé depuis le scss grâce à Webpack. Le front étant relativement simple, il n'a pris que quelques jours à développer.</p>
 			</div>
 		</div>
 		<div class="text-block">
 			<div class="title">
-				<h2>Début du développement</h2>
+				<h2>Développement du back-end</h2>
 			</div>
 			<div class="content">
-				<p>La cliente souhaitant voir le site en ligne le plus tôt possible, j'ai donc commencé par créer quelque pages projets en "dur" : cela m'as permit de créer les différents blocs composant les pages avant de concevoir le back-office. De cette manière, de premiers ajustement ont pu être réalisés avant même le développement, ce qui à permit de gagner du temps, et d'éviter des erreurs de conception.</p>
+				<p>Le back-end était la partie la plus complexe du site, car je débutais à l'époque sur le framework Symfony, que j'avais tout juste commencé à apprendre. J'ai commencé par concevoir le système de catalogue des biens immobiliers. Une entité
+					<code>Property</code>
+					représente un bien.</p>
 			</div>
 		</div>
 	</div>
 
-	<div class="container">
-		<img src="{{ asset("build/images/projets/portfolio-agathe/nouveau_portfolio_agathe-verasdonck.png")}}" alt="Patchwork des pages du portfolio de Agathe Verasdonck" class="w-100 mt-100">
-	</div>
 
 	<div class="container">
-		<div class="row my-100">
-			<div class="col-md-6">
-				<img src="{{ asset("build/images/projets/portfolio-agathe/entites.png") }}" alt="">
-				<p>Structure des entités du projet</p>
-			</div>
-			<div class="col-md-6">
-				<h2>Conception de la structure d'un projet</h2>
-				<p>En analysant les pages projets de la maquette, on remarque qu'un projet est scindé en plusieurs 'blocs', qui reviennent sur chaque projets. C'est à ce moment que j'ai décidé de la structure des projets dans le code de l'application. Chaque projet est découpé en plusieurs entités, conçues de manière à être 100% personnalisables.</p>
-				<p>La structure est la suivante :
-				</p>
-				<ul>
-					<li>Une classe
-						<code>Project</code>, qui représente le projet dans sa globalité. Elle contient les informations telles que son nom, sa description, son image de couverture etc.</li>
-					<li>Une classe
-						<code>Block</code>, générique, qui fait la relation entre les différents blocs disponibles pour la création du projet</li>
-					<li>Enfin, plusieurs classes
-						<code>*Type*Block</code>
-						(<code>ImageBlock</code>,
-						<code>TextBlock</code>...) représentent les différents blocs existants</li>
-				</ul>
-			</div>
-		</div>
-		<div class="text-block" style="padding-top: 0px">
-			<div class="title">
-				<h2>Conception du Back-office</h2>
+		<img src="{{ asset("build/images/projets/aximonial/paul_le_flem_creer_article_aximonial.png") }}" alt="Page de création d'un article sur le site aximonial">
+
+		<div class="text-block">
+			<div class="title noanim">
+				<h2>Conception du blog</h2>
 			</div>
 			<div class="content">
-				<p>Une fois les entités du projet crée, j'ai commencé à développer le back-office. J'ai décidé d'une mise en page simple (photo en dessous). Lorsque que l'on crée un projet, on renseigne le minimum d'information, et c'est lors de la modification, que l'on peut alors commencer à remplir le projet.</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="container mt-100">
-		<div class="img-center my-100">
-			<img src="{{ asset("build/images/projets/portfolio-agathe/back-office.png")}}" alt="Back-office du portfolio de Agathe Verasdonck" class="w-100">
-			<p>Page de modification d'un projet</p>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row my-100">
-			<div class="col-md-6">
-				<img src="{{ asset("build/images/projets/portfolio-agathe/blockController.png") }}" alt="">
-			</div>
-			<div class="col-md-6 center-y">
-				<h2>Formulaire générique</h2>
-				<p>Pour me simplifier la tâche pendant le développement, j'ai souhaité utiliser une unique page pour la création des différent blocs. Pour ce faire, j'ai crée un controller (<code>BlockController</code>), qui utilise un
-					<code>switch</code>
-					pour déterminer le formulaire à utiliser en fonction d'un paramètre dans l'url.</p>
-				<p>Cependant, la conception m'oblige tout de même à devoir modifier ce controller à chaque ajout de bloc, ce qui n'est pas idéal.</p>
-			</div>
-			<div class="col-md-6">
-				<p>Code du controller
-					<code>BlockController</code>
+				<p>Après avoir développé la gestion des biens immobiliers, j'ai démarré la partie blog. un
+					<code>Blog</code>
+					(article de blog) est composé d'un titre, une catégorie, une image de couverture, une description et un contenu. Le site étant développé en Symfony, j'ai utilisé le bundle
+					<a href="https://github.com/dustin10/VichUploaderBundle" target="_blank" rel="noopener noreferrer" class="simple-link">Vich/uploader-bundle</a>
 				</p>
 			</div>
 		</div>
+
+		<div class="text-block">
+			<div class="title noanim">
+				<h2>Système de filtre</h2>
+			</div>
+			<div class="content">
+				<p>Pour plus facilement pouvoir trouver un bien qui nous correspond, il m'a été demandé d'ajouter un système de filtre. Après concertation, nous avons choisi de proposer comme critère les suivants : type de prix (location / vente), prix (minimum, maximum), type de bien, nombre de pièces (minimum / maximum) et surface. Le filtre fonctionné en modifiant la requête SQL envoyée à la base de données en fonction des filtres choisit.</p>
+			</div>
+		</div>
 	</div>
+
 	<div class="container">
 		<div class="text-block">
 			<div class="title">
-				<h2>Vitesse et optimisations</h2>
+				<h2>Difficultés rencontrés</h2>
 			</div>
 			<div class="content">
-				<p>Un beau site, c'est important. Un site rapide, ça l'est encore plus. Pour m'assurer que le portfolio le soit, tout un travail d'optimisation à du être mis en place. En effet, le site comporte énormément d'images de grande taille, qui doivent conserver une qualité optimale.</p>
-				<p>Pour ce faire, j'ai utilisé le bundle Symfony/UX-turbo : il permet l'intégration de la librairie Javascript
-					<a href="https://turbo.hotwired.dev/" target="_blank" rel="noopener noreferrer" class="simple-link">
-						<span>Turbo</span>
-					</a>, développé par Hotwire. Cette librairie permet de donner au site un feeling de Single Page Application (SPA) : Turbo écoute les clics sur les balises
-					<code>&lt;a&gt;</code>, les annule, et charge en arrière plan la page demandé via fetch. Une fois la page chargée, il remplace alors le corps de la page actuelle (balise
-					<code>body</code>) par celui qu'il vient de récupérer.</p>
-				<p>L'utilisation de Turbo permet donc de n'avoir qu'un seul chargement "complet" de la page, ce qui augmente les performances de manière significatives.</p>
+				<p>Étant le premier vrai projet que je développais en Symfony, il m'a fallu un peu de temps pour l'appréhender. J'ai également dû apprendre à utiliser Webpack, Doctrine et VichUploader, qui m'ont tous servis lors de la réalisation de ce projet. Cet apprentissage fut un challenge, mais qui m'a beaucoup plu, et m'as permis d'évoluer dans mon métier.</p>
 			</div>
 		</div>
-		<div class="text-block" style="margin-bottom: 0px">
+		<div class="text-block">
 			<div class="title">
-				<h2>Mise en cache</h2>
+				<h2>Ce que j'en retiens</h2>
 			</div>
 			<div class="content">
-				<p>Les pages projet provenant de la base de donnée, une perte de performances est à prévoir en comparaison à un site statique. Cependant, ce défaut est mitigé par l'utilisation de règles de cache efficaces dans le fichier
-					<code>.htaccess</code>, ainsi que le cache mis en place par Twig, le moteur de template utilisé par Symfony</p>
+				<p>L'utilisation du framework Symfony, que j'ai apprécié, et que j'utilise maintenant chaque jour, plus d'un an après la réalisation de ce premier projet.</p>
 			</div>
 		</div>
-
-		<img src="{{ asset("build/images/projets/portfolio-agathe/gtmetrix.png") }}" alt="Résultat du test GT Metrix sur une page projet provenant de la base de donnée" class="w-100 mt-100">
-		<p>Résultat du test GT Metrix sur une page projet provenant de la base de donnée</p>
 	</div>
 
 {% endblock %}
