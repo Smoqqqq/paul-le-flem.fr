@@ -10,7 +10,7 @@ class TextBlockAnimation {
 
                         setTimeout(() => {
                             delay = false;
-                        }, 50)
+                        }, 100)
                     })
                 }
             })
@@ -25,7 +25,7 @@ class TextBlockAnimation {
 
             if (y > 0 && y < innerHeight) {
                 let height = blocks[i].getBoundingClientRect().height;
-                let h2 = blocks[i].querySelector(".title");
+                let h2 = blocks[i].querySelector(".title:not(.noanim)");
 
                 if (h2) {
                     let distance = height * (innerHeight - y) / innerHeight / 6;

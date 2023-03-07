@@ -47,6 +47,7 @@
 .alt-simple-link {
     position: relative;
     text-decoration: none;
+    color: white;
 
     span {
         position: relative;
@@ -71,5 +72,10 @@
             background: $yellow;
             opacity: 0.5;
         }
+    }
+
+    &.mt-5 {
+        display: block;
+        width: fit-content;
     }
 }

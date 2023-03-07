@@ -7,7 +7,9 @@
 		<a href="{{ path("app_project_play_aventure_culture") }}" class="project-link" target="_blank">Jouer au jeu</a>
 	</div>
 
-	<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_accueil_aventure_culture.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="header-mockup">
+	<div class="image-zoom">
+		<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_accueil_aventure_culture.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="header-mockup">
+	</div>
 
 	<div class="container mt-100">
 		<div class="text-block">
@@ -100,7 +102,8 @@
 				<h2>Création du joueur</h2>
 			</div>
 			<div class="content">
-				<p>Le joueur est représenté par la classe <code>Player</code>. Elle ne comporte qu'un minimum de responsabilitées : afficher le joueur, et lui permettre de se déplacer. Elle stocke également toutes ces informations, telles que l'image à utiliser (qui est choisit par l'utilisateur au début du jeu), sa position etc...</p>
+				<p>Le joueur est représenté par la classe
+					<code>Player</code>. Elle ne comporte qu'un minimum de responsabilitées : afficher le joueur, et lui permettre de se déplacer. Elle stocke également toutes ces informations, telles que l'image à utiliser (qui est choisit par l'utilisateur au début du jeu), sa position etc...</p>
 			</div>
 		</div>
 
@@ -110,21 +113,26 @@
 			</div>
 			<div class="content">
 				<p>Les personnages sont "le gros" du jeu : c'est en intéragissant avec eux que l'on peut alors lire leur biographie, et répondre à un quizz, ce qui permet, une fois tous les quizz validés, de terminer le jeu et d'obtenir le certificat de réussite.</p>
-				<p>Ils sont représentés dans le code par la classe <code>Caracter</code>. C'est elle qui à la responsabilité de gérer les évènements en rapport avec le joueur, comme d'ouvrir le dialogue permettant de lire leur biographie et répondre a leur quizz, si le joueur appuie sur la touche "e"</p>
+				<p>Ils sont représentés dans le code par la classe
+					<code>Caracter</code>. C'est elle qui à la responsabilité de gérer les évènements en rapport avec le joueur, comme d'ouvrir le dialogue permettant de lire leur biographie et répondre a leur quizz, si le joueur appuie sur la touche "e"</p>
 			</div>
 		</div>
 
-		<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_invitation_steve_jobs.png") }}" alt="Invitation à répondre au quizz Steve Jobs">
+			<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_invitation_steve_jobs.png") }}" alt="Invitation à répondre au quizz Steve Jobs">
 
 		<div class="text-block">
-			<div class="title">
+			<div class="title noanim">
 				<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_level_instanciation.png") }}" alt="Instanciation d'un niveau">
 			</div>
 			<div class="content">
 				<h2>Création d'un niveau</h2>
-				<p>Souhaitant pouvoir faire évoluer le jeu, j'ai donc créé une classe <code>Level</code>, qui permet la création d'un niveau de manière simple, en l'étendant.</p>
-				<p>Pour la création d'un niveau (image à gauche), il suffit de décrire les éléments qui le composent. Le jeu étant assez simple dans sa conception, seuls deux éléments sont à renseigner : les personnages présents sur le niveau, stockés dans le tableau <code>this.caracters</code> et les murs présents sur le niveau (seul un sol est présent).</p>
-				<p>Une fois les personnages non-joueurs instanciés, il faut alors définir un "callback" : la fonction qui sera appelé lors de l'intéraction avec un personnage. Chaque personnage a son propre "callback", dans lequel on crée un objet correspondant aux informations de sa biographique, et aux questions de son quizz. Cet objet sera alors passé à une nouvelle instance de <code>CaracterQuizz</code>, qui à pour rôle d'afficher une page comportant toutes les informations renseignés dans l'objet qui lui est transmis.</p>
+				<p>Souhaitant pouvoir faire évoluer le jeu, j'ai donc créé une classe
+					<code>Level</code>, qui permet la création d'un niveau de manière simple, en l'étendant.</p>
+				<p>Pour la création d'un niveau (image à gauche), il suffit de décrire les éléments qui le composent. Le jeu étant assez simple dans sa conception, seuls deux éléments sont à renseigner : les personnages présents sur le niveau, stockés dans le tableau
+					<code>this.caracters</code>
+					et les murs présents sur le niveau (seul un sol est présent).</p>
+				<p>Une fois les personnages non-joueurs instanciés, il faut alors définir un "callback" : la fonction qui sera appelé lors de l'intéraction avec un personnage. Chaque personnage a son propre "callback", dans lequel on crée un objet correspondant aux informations de sa biographique, et aux questions de son quizz. Cet objet sera alors passé à une nouvelle instance de
+					<code>CaracterQuizz</code>, qui à pour rôle d'afficher une page comportant toutes les informations renseignés dans l'objet qui lui est transmis.</p>
 			</div>
 		</div>
 	</div>

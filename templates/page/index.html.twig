@@ -14,9 +14,37 @@
 		<img src="{{ asset("build/images/patchwork_images_paul_le_flem.png") }}" alt="Patchwork d'images des sites que j'ai réalisé" id="patchwork">
 	</div>
 
-	{# 	<div class="container-large">
-			<h2 class="large">À PROPOS</h2>
-		</div> #}
+	<div id="a-propos"></div>
+
+	<div class="container-large" id="about">
+		<h2 class="large mt-100">À PROPOS</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<p>Passionné par le développement depuis que je l'ai découvert fin terminale, j'ai orienté mes connaissances dans le domaine du web. Curieux et avec l'envie d'apprendre, je me renseigne toujours sur le domaine, et j'aime passer mon temps libre à apprendre une nouvelle technologie ou expérimenter avec un langage.</p>
+
+				<p>Souhaitant poursuivre mes études en cursus ingénieur, je recherche une alternance pour une durée de deux ans, en tant que développeur full-stack ou back-end.</p>
+
+				<a href="{{ asset("build/images/paul_le_flem_cv.pdf") }}" class="alt-simple-link mt-5 my-5" target="_blank">PLUS D'INFOS SUR MON CV
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewbox="0 0 16 16">
+						<path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+					</svg>
+				</a>
+			</div>
+			<div class="col-md-8">
+				<p>Étudiant en troisième année de bachelor développement et data à l'Efrei, je travaille en alternance depuis deux ans chez BH Internet au poste de développeur web. Au cours de la première année, j'ai eu l'occasion d'apprendre PHP en profondeur, en réalisant au début des modifications sur différents sites de l'agence. J'ai rapidement appréhendé le langage, et il m'as ensuite été confié des tâches plus importantes comme l'ajout de fonctionnalitées. Au début de la deuxième année en alternance dans l'entreprise, je réalisait mes premiers sites complets, en utilisant le framework maison de l'entreprise. J'ai eu l'occasion de créer et travailler sur des sites vitrines, e-commerce, des sites catalogues et des intranets.</p>
+
+				<p>Aujourd'hui dans ma troisième année d'alternance chez BH Internet, je suis chargé de la conception et du développement de sites applicatifs, et participe au choix des technologies, et estimation de la charge de travail en relation avec les commerciaux.</p>
+			</div>
+
+			<div id="paul">
+				<div id="text">
+					<h3>Paul Le Flem</h3>
+					<h3>Développeur full-stack</h3>
+				</div>
+				<img src="{{ asset("build/images/paul_le_flem_miniature.png") }}" id="image">
+			</div>
+		</div>
+	</div>
 
 	<div id="project-grid"></div>
 
@@ -26,7 +54,7 @@
 
 		<div class="project-grid">
 			<a href="{{ path("app_project_portfolio_agathe_verasdonck") }}" class="project-preview cursor_trigger">
-				<img src="{{ asset("build/images/profil_agathe_verasdonck.png") }}" alt="Aximonial" class="preview"/>
+				<img src="{{ asset("build/images/profil_agathe_verasdonck.png") }}" alt="Image de couverture agathe-verasdonck.fr" class="preview"/>
 				<div class="project-title">
 					portfolio
 				</div>
@@ -38,7 +66,7 @@
 				</div>
 			</a>
 			<a href="{{ path("app_project_server_parser") }}" class="project-preview cursor_trigger dark">
-				<img src="{{ asset("build/images/projets/server-parser/paul_le_flem_vignette_server_parser.png") }}" alt="Server parser" class="preview"/>
+				<img src="{{ asset("build/images/projets/server-parser/paul_le_flem_vignette_server_parser.png") }}" alt="Image de couverture Server parser" class="preview"/>
 				<div class="project-title">
 					Gestion des sites et serveurs
 				</div>
@@ -50,7 +78,7 @@
 				</div>
 			</a>
 			<a href="{{ path("app_project_aventure_culture") }}" class="project-preview cursor_trigger">
-				<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_vignette_aventure_culture.png") }}" alt="Server parser" class="preview"/>
+				<img src="{{ asset("build/images/projets/aventure-culture/paul_le_flem_vignette_aventure_culture.png") }}" alt="Image de couverture Aventure culture" class="preview"/>
 				<div class="project-title">
 					Jeu / site intéractif
 				</div>
@@ -61,6 +89,71 @@
 					2023
 				</div>
 			</a>
+			<div class="project-preview cursor_soon_trigger">
+				<img src="{{ asset("build/images/projets/un-jeune-une-alternance/cover.jpg") }}" alt="Image de couverture Un jeune une alternance" class="preview"/>
+				<div class="project-title">
+					ERP pour les CFA
+				</div>
+				<div class="project-name">
+					1jeune1alternance
+				</div>
+				<div class="project-date">
+					2023
+				</div>
+			</div>
+
+			<div class="project-preview contain cursor_soon_trigger" style="background: #a0a0a0">
+				<img src="{{ asset("build/images/projets/rust-searchbar/rust-mascot.png") }}" alt="Image de couverture Rust searchbar" class="preview"/>
+				<div class="project-title">
+					Lanceur d'application
+				</div>
+				<div class="project-name">
+					Rust searchbar
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</div>
+
+			<div class="project-preview cursor_soon_trigger">
+				<img src="{{ asset("build/images/projets/igprint/paul_le_flem_cover_igprint.png") }}" alt="Image de couverture IG Print" class="preview"/>
+				<div class="project-title">
+					Site e-commerce
+				</div>
+				<div class="project-name">
+					IG Print
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</div>
+
+			<div class="project-preview cursor_soon_trigger">
+				<img src="{{ asset("build/images/projets/aximonial/cover.jpg") }}" alt="Image de couverture Aximonial" class="preview"/>
+				<div class="project-title">
+					Site catalogue
+				</div>
+				<div class="project-name">
+					Aximonial
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</div>
+
+			<div class="project-preview cursor_soon_trigger">
+				<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_cover_esp.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
+				<div class="project-title">
+					Site catalogue
+				</div>
+				<div class="project-name">
+					ESP Automobiles
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</div>
+
 		</div>
 	</div>
 

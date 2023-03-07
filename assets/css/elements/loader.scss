@@ -1,0 +1,112 @@
+#loader {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: $theme;
+    z-index: 999999;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+
+    #firstname {
+        color: $yellow;
+        font-size: 5vw;
+    }
+
+    #lastname {
+        color: white;
+        font-size: 5vw;
+    }
+
+    &.visible {
+        opacity: 0;
+        pointer-events: all;
+        #firstname, #lastname {
+            opacity: 0;
+        }
+    }
+
+    &.visible-text {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &.loading {
+        opacity: 1;
+        pointer-events: all;
+        #firstname {
+            animation: 0.5s firstnameLoading;
+        }
+        #lastname {
+            animation: 0.5s lastnameLoading;
+        }
+    }
+
+    &.loaded {
+        opacity: 1;
+        pointer-events: all;
+        #firstname {
+            animation: 1s firstnameLoaded;
+        }
+        #lastname {
+            animation: 1s lastnameLoaded;
+        }
+    }
+
+    @keyframes firstnameLoading {
+        0% {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+
+    @keyframes lastnameLoading {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+
+    @keyframes firstnameLoaded {
+        0% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes lastnameLoaded {
+        0% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+    }
+}

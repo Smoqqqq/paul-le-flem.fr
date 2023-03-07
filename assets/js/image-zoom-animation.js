@@ -10,7 +10,7 @@ class ImageZoomAnimation {
 
                         setTimeout(() => {
                             delay = false;
-                        }, 50)
+                        }, 100)
                     })
                 }
             })
@@ -21,8 +21,12 @@ class ImageZoomAnimation {
         let images = document.querySelectorAll(".image-zoom img");
 
         for (let i = 0; i < images.length; i++) {
-            let distance = 1.1 - Math.round(images[i].getBoundingClientRect().y) / innerHeight / 20;
-            images[i].style.transform = `scale(${distance})`;
+            let y = images[i].getBoundingClientRect().y;
+            let height = images[i].getBoundingClientRect().height;
+            if (y + height > 0 && y < innerHeight) {
+                let distance = 1.1 - Math.round(y) / innerHeight / 20;
+                images[i].style.transform = `scale(${distance})`;
+            }
         }
     }
 }

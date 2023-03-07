@@ -1,2 +1,52 @@
 @import "../elements/project-preview";
 @import "../elements/jumbotron";
+
+#about {
+    .row {
+        padding-bottom: 150px;
+        position: relative;
+
+        #paul {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            h3 {
+                font-size: 20px;
+                margin: 15px 0px;
+                
+                &:first-child {
+                    color: $yellow;
+                }
+            }
+            
+            img {
+                width: 176px;
+                margin-left: 30px;
+            }
+
+            @media (max-width: 450px) {
+                position: relative;
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+
+                img {
+                   margin: 0px; 
+                }
+            }
+        }
+
+        @media (max-width: $mobile) {
+            padding-bottom: 200px;
+        }
+
+        @media (max-width: 450px) {
+            padding-bottom: 25px;
+        }
+    }
+}

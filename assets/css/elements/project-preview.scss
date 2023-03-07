@@ -76,6 +76,10 @@
                 filter: brightness(1);
             }
         }
+
+        &.cursor_soon_trigger {
+            filter: brightness(0.75) grayscale(0.75);
+        }
     }
 
     @media (max-width: $mobile) {

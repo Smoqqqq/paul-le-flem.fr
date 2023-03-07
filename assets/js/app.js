@@ -15,8 +15,12 @@ import TextBlockAnimation from "./text-block-animation";
 import ImageZoomAnimation from './image-zoom-animation';
 
 addEventListener("turbo:load", () => {
+
+    animateLoader();
+
     const cursor = document.getElementById('cursor');
     const cursor_triggers = document.getElementsByClassName("cursor_trigger");
+    const cursor_soon_triggers = document.getElementsByClassName("cursor_soon_trigger");
     const cursor_opacity_triggers = document.getElementsByClassName("cursor_opacity_trigger");
 
     document.addEventListener('mousemove', (e) => {
@@ -30,6 +34,17 @@ addEventListener("turbo:load", () => {
             cursor.classList.add('hovering');
         })
         cursor_triggers[i].addEventListener('mouseleave', () => {
+            cursor.classList.remove('hovering');
+            cursor.innerText = "";
+        })
+    }
+
+    for (let i = 0; i < cursor_soon_triggers.length; i++) {
+        cursor_soon_triggers[i].addEventListener('mouseenter', () => {
+            cursor.innerText = "BIENTÔT";
+            cursor.classList.add('hovering');
+        })
+        cursor_soon_triggers[i].addEventListener('mouseleave', () => {
             cursor.classList.remove('hovering');
             cursor.innerText = "";
         })
@@ -70,10 +85,12 @@ addEventListener("turbo:load", () => {
                     let target = document.querySelector("#" + this.getAttribute('href').split("#")[1]);
 
                     if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: "start"
-                        });
+                        setTimeout(() => {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: "start"
+                            });
+                        }, 100)
                     }
 
                     removeEventListener("turbo:load", navigateToAnchor);
@@ -88,4 +105,37 @@ addEventListener("turbo:load", () => {
 
     new TextBlockAnimation();
     new ImageZoomAnimation();
+})
+
+function animateLoader() {
+    const loader = document.getElementById("loader");
+
+    setTimeout(() => {
+        loader.classList.add("loaded");
+        loader.classList.remove("loading");
+        loader.style.transition = "0.5s";
+        setTimeout(() => {
+            loader.classList.add("visible");
+            loader.classList.remove("loaded");
+
+            setTimeout(() => {
+                loader.classList.remove("visible");
+            }, 500)
+        }, 500)
+    }, 500);
+}
+
+function animateOutLoader() {
+    const loader = document.getElementById("loader");
+    loader.classList.add("loading");
+}
+
+addEventListener("turbo:click", (e) => {
+    e.preventDefault();
+    visit = true;
+    animateOutLoader();
+
+    setTimeout(() => {
+        Turbo.visit(e.detail.url);
+    }, 500)
 })

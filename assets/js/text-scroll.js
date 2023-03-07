@@ -25,7 +25,7 @@ class TextScroll {
             this.texts[i].elem.innerHTML += this.texts[i].textContent.replaceAll(" ", "&nbsp;");
         }
 
-        let height = innerWidth > 992 ? 100 : 48;
+        let height = innerWidth > 992 ? 105 : 48;
 
         this.root.style.height = this.texts.length * height + "px";
     }

@@ -94,6 +94,19 @@ ul {
     }
 }
 
+.mt-5 {
+    margin-top: 50px;
+}
+
+.mb-5 {
+    margin-bottom: 50px;
+}
+
+.my-5 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 code {
     color: $yellow;
     font-size: 18px;
@@ -115,7 +128,7 @@ code {
     justify-content: space-between;
 
     .col-md-4 {
-        width: calc(100% / 3);
+        width: calc(100% / 3 - 100px / 3);
         
         @media (max-width: $mobile) {
             width: 100%;
@@ -124,6 +137,14 @@ code {
 
     .col-md-6 {
         width: calc(50% - 50px);
+        
+        @media (max-width: $mobile) {
+            width: 100%;
+        }
+    }
+    
+    .col-md-8 {
+        width: calc(100% / 3 * 2 - 100px / 3 * 2);
         
         @media (max-width: $mobile) {
             width: 100%;
