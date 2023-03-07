@@ -24,10 +24,6 @@ class TextScroll {
             this.texts[i].elem.innerHTML += this.texts[i].textContent.replaceAll(" ", "&nbsp;");
             this.texts[i].elem.innerHTML += this.texts[i].textContent.replaceAll(" ", "&nbsp;");
         }
-
-        let height = innerWidth > 992 ? innerWidth / 18 : 48;
-
-        this.root.style.height = this.texts.length * height + "px";
     }
 
     initAnimation() {
@@ -50,7 +46,7 @@ class TextScroll {
 
             text.charIndex++;
 
-            if(text.charIndex === text.textContent.length) {
+            if (text.charIndex === text.textContent.length) {
                 text.charIndex = 0;
             }
 

@@ -3,7 +3,7 @@
 
 #about {
     .row {
-        padding-bottom: 150px;
+        padding-bottom: 50px;
         position: relative;
 
         #paul {
@@ -46,7 +46,7 @@
         }
 
         @media (max-width: 450px) {
-            padding-bottom: 25px;
+            padding-bottom: 0px;
         }
     }
 }

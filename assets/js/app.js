@@ -74,10 +74,15 @@ window.addEventListener("turbo:load", () => {
             document.getElementById("navbar").classList.remove("open");
 
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: "start"
-                });
+                console.log(target.getBoundingClientRect());
+
+                let offset = (target.getAttribute("data-scroll-offset")) ? target.getAttribute("data-scroll-offset") : 0;
+
+                window.scroll({
+                    left: 0,
+                    top: target.getBoundingClientRect().y - offset + document.documentElement.scrollTop || document.body.scrollTop,
+                    behavior: "smooth"
+                })
             } else {
                 Turbo.visit(anchor.getAttribute("href").split("#")[0]);
 
@@ -86,10 +91,14 @@ window.addEventListener("turbo:load", () => {
 
                     if (target) {
                         setTimeout(() => {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: "start"
-                            });
+                            console.log(target.getBoundingClientRect());
+                            let offset = (target.getAttribute("data-scroll-offset")) ? target.getAttribute("data-scroll-offset") : 0;
+
+                            window.scroll({
+                                left: 0,
+                                top: target.getBoundingClientRect().y - offset + document.documentElement.scrollTop || document.body.scrollTop,
+                                behavior: "smooth"
+                            })
                         }, 100)
                     }
 
