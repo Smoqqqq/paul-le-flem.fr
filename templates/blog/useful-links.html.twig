@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Une liste de liens utiles pour les développeurs
+{% endblock %}
+
+{% block description %}
+	Cette page regroupe plusieurs liens vers des ressources à ne pas manquer pour les développeurs
+{% endblock %}
+
+{% block content %}
+
+	<div class="project-header">
+		<h1 class="project-main-title">Ressources pour les développeurs</h1>
+	</div>
+
+	<div class="container">
+
+		<p>Les liens présents sur cette page sont des ressources que je trouve intérressantes, voir passionnantes. Elles sont ici pour deux raisons :
+		</p>
+		<ul>
+			<li>Vous les partager</li>
+			<li>Me permettre de garder trace de ces ressources</li>
+		</ul>
+
+		<div class="text-block">
+			<div class="title">
+				<a href="https://agilemanifesto.org/" target="_blank" rel="noopener noreferrer" class="simple-link">The Agile manifesto</a>
+			</div>
+			<div class="content">
+				<p>Manifeste des principes Agiles, je recommande la lecture</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<a href="https://12factor.net/" target="_blank" rel="noopener noreferrer" class="simple-link">The 12 factor app</a>
+			</div>
+			<div class="content">
+				<p>12 principes important à la réalisation d'un application de qualité</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<a href="https://www.michaelvizdos.com/interactive-scrum-guide" target="_blank" rel="noopener noreferrer" class="simple-link">interactive Scrum guide</a>
+			</div>
+			<div class="content">
+				<p>Guide sur la mise en place des principes SCRUM</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<a href="https://hbr.org/1986/01/the-new-new-product-development-game" target="_blank" rel="noopener noreferrer" class="simple-link">The new new product development game</a>
+			</div>
+			<div class="content">
+				<p>Article de Harvard Business Review sur les débuts de la mise en place d'une méthodologie plus rapide pour le développement de produits</p>
+			</div>
+		</div>
+	</div>
+
+	<style>
+		p {
+			margin-top: 0px;
+		}
+	</style>
+
+{% endblock %}

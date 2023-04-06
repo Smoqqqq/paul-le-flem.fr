@@ -20,10 +20,22 @@ class ProjectController extends AbstractController
         return $this->render('project/aximonial.html.twig');
     }
 
+    #[Route('/projet/ig-print', name: 'app_project_ig_print')]
+    public function igPrint(): Response
+    {
+        return $this->render('project/ig-print.html.twig');
+    }
+
     #[Route('/projet/server-parser', name: 'app_project_server_parser')]
     public function serverParser(): Response
     {
         return $this->render('project/server-parser.html.twig');
+    }
+
+    #[Route('/projet/esp-automobiles', name: 'app_project_esp_automobiles')]
+    public function espAutomobiles(): Response
+    {
+        return $this->render('project/esp-automobiles.html.twig');
     }
 
     #[Route('/projet/aventure-culture', name: 'app_project_aventure_culture')]

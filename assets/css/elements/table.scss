@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        width: 100%;
+
+        tr {
+            background: rgba(0, 0, 0, 0.2);
+
+            th {
+                padding: 10px;
+                text-align: left;
+            }
+        }
+    }
+
+    tbody {
+        width: 100%;
+
+        tr {
+            td {
+                padding: 10px;
+                text-align: left;
+                border: 2px solid rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}

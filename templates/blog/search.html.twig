@@ -1,16 +1,68 @@
-<h2 class="large mt-100">Articles de blog</h2>
+{% extends "base.html.twig" %}
 
-<div class="row">
-	<div class="col-md-6">
-		<a href="{{ path("app_blog_speed_up_symfony") }}" class="simple-dark-link cursor_opacity_trigger blog-preview">
-			<div>
-				<h2>Comment améliorer l'expérience utilisateur d'un site en Symfony
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewbox="0 0 16 16">
-						<path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
-					</svg>
-				</h2>
-				<p>Apprenez les bases pour optimiser et rendre un site en Symfony plus rapide grâce à quelques bonne pratiques et l'utilisation de Turbo Drive</p>
-			</div>
-		</a>
+{% block title %}Mes articles de blog
+{% endblock %}
+
+{% block description %}
+	Retrouvez ici tous mes articles de blog ainsi que des ressources intéressantes pour les développeurs
+{% endblock %}
+
+{% block content %}
+	<div class="project-header">
+		<h1 class="project-main-title">Articles de blog</h1>
 	</div>
-</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<a href="{{ path("app_blog_developers_qualities") }}" class="simple-dark-link cursor_opacity_trigger blog-preview">
+					<div>
+						<h2>Les qualités du développeur
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+							</svg>
+						</h2>
+						<p>Quelles qualités sont nécessaire pour devenir un bon développeur (de mon point de vue)</p>
+						<div class="text-end">19-03-2023</div>
+					</div>
+				</a>
+				<a href="{{ path("app_blog_import_spreadsheet") }}" class="simple-dark-link cursor_opacity_trigger blog-preview">
+					<div>
+						<h2>Importer des données depuis un excel
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+							</svg>
+						</h2>
+						<p>Découvrez ma méthodologie pour importer un grand nombre de produits ou donnée depuis un fichier excel.</p>
+						<div class="text-end">12-02-2023</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-6">
+				<a href="{{ path("app_blog_dev_ressources") }}" class="simple-dark-link cursor_opacity_trigger blog-preview">
+					<div>
+						<h2>Ressources utiles pour les développeurs
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+							</svg>
+						</h2>
+						<p>liste de liens vers des ressources que je trouve intéressantes pour les développeurs / personnes travaillant dans l'informatique</p>
+						<div class="text-end">12-03-2023</div>
+					</div>
+				</a>
+				<a href="{{ path("app_blog_speed_up_symfony") }}" class="simple-dark-link cursor_opacity_trigger blog-preview">
+					<div>
+						<h2>Comment améliorer l'expérience utilisateur d'un site en Symfony
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewbox="0 0 16 16">
+								<path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+							</svg>
+						</h2>
+						<p>Apprenez les bases pour optimiser et rendre un site en Symfony plus rapide grâce à quelques bonne pratiques et l'utilisation de Turbo Drive</p>
+						<div class="text-end">02-02-2023</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

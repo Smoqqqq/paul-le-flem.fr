@@ -1,0 +1,224 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Comment importer des produits via un fichier excel avec PhpSpreadSheet
+{% endblock %}
+
+{% block description %}
+	Découvrez comment remplir facilement votre base de donnée en important vos produits depuis un fichier excel
+{% endblock %}
+
+{% block content %}
+
+	<div class="project-header">
+		<h1 class="project-main-title">Faciliter l'ajout de produits en important depuis excel</h1>
+	</div>
+
+	<div class="container">
+		<p>Dans cet article, j'explique ma méthodologie lorsque j'ai besoin d'importer un grand nombre de produit depuis un fichier excel vers un site e-commerce.</p>
+		<p>Bien que l'exemple utilise des produits, il est également possible de l'utiliser pour importer tout type de données, que ce soit des utilisateurs, des produits, des articles de blog etc...</p>
+
+		<p>Dernier point : j'utilise dans le cadre de cet article le framework Symfony. Bien que cela oriente légérement le code, il est tout à fait possible d'utiliser un autre framework, ou simplement PHP "pure".</p>
+
+		<h2 class="mt-100">PhpSpreadSheet</h2>
+		<p>Pour importer nos produits, nous allons utiliser la librairie
+			<a href="https://github.com/PHPOffice/PhpSpreadsheet" class="simple-link" target="_blank" rel="noopener noreferrer">PHPOffice / PhpSpreadsheet</a>.</p>
+
+		<p>Commençont par l'installer en utilisant Composer :</p>
+		<pre><code class="language-sh">composer require phpoffice/phpspreadsheet</code></pre>
+
+		<p>Si vous n'avez pas composer installé, vous pouvez l'installer
+			<a href="https://getcomposer.org/" target="_blank" rel="noopener noreferrer" class="simple-link">ici</a>, ou installer la librairie manuellement depuis leur
+			<a href="https://github.com/PHPOffice/PhpSpreadsheet" class="simple-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+		</p>
+
+		<h2 class="mt-100">Utiliser la librairie</h2>
+		<p>Tous d'abord, il est nécessaire d'instancier un
+			<code>Reader</code>
+			: c'est la classe qui permet la lecture du fichier. Il existe plusieurs readers, adapté à chaque version de fichier (.csv, .xlsx...). Dans mon cas, ce sera
+			<code>Xlsx</code>, mais cela n'as pas d'impact sur la suite, car ils fonctionnent tous de la même manière.</p>
+
+		<pre><code class="language-php">$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx()</code></pre>
+
+		<div class="mt-100"></div>
+		<p>La première étape pour importer les données sera de charger le fichier. Pour cela, nous utiliserons l'instruction suivante :</p>
+
+		<pre><code class="language-php">$spreadSheet = $reader->load($file);</code></pre>
+
+		<div class="mt-100"></div>
+
+		<p>Ensuite, il faudra sélectionner la feuille à utiliser. Si votre fichier n'en contient qu'une, vous pouvez utiliser l'instruction suivante :</p>
+		<pre><code class="language-php">$sheet = $spreadSheet->getActiveSheet();</code></pre>
+
+		<p class="mt-5">Sinon, vous pouvez utiliser la méthode suivante pour sélectionner une feuille en fonction de son nom :</p>
+		<pre><code class="language-php">$sheet = $spreadSheet->getSheetByName("nom-de-ma-feuille");</code></pre>
+
+		<p>Nous utiliserons ensuite la méthode <code>$sheet->getCell("identifiant_cellule")</code> pour sélectionner une cellule, puis la méthode <code>GetValue()</code> nous permettra de récupérer sa valeur.</p>
+
+		<h2 class="mt-100">Déterminer la méthode à utiliser</h2>
+		<p>Maintenant que vous avez accès au fichier, il va falloir boucler dessus pour en lire les données.</p>
+		<p>Avant tout, il est nécessaire de déterminer comment procéder : il faut alors analyser le fichier que vous aller utiliser pour choisir la bonne méthode d'import.</p>
+
+		<p>Selon le cas, il faudra agir différement. Si votre fichier n'est pas "nettoyé", vous avez deux options : nettoyer le fichier au préalable manuellement, ce qui peut être très long dépendant de la taille du fichier. Vous pouvez également prendre en compte dans votre code que certaines valeurs ne sont pas correct : ignorer les valeurs nulles, ou les lignes incomplètes</p>
+
+		<h2 class="mt-100">Exemple avec un fichier propre</h2>
+
+		<p>Pour cet exemple, nous utiliserons la structure suivante pour le fichier excel, et considererons qu'il est déja "propre".</p>
+
+		<table class="mt-100">
+			<thead>
+				<tr>
+					<th>Nom du produit</th>
+					<th>Description</th>
+					<th>Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Table basse</td>
+					<td>Table basse en bois d'acajou. Dimensions 150cm x 70cm</td>
+					<td>145</td>
+				</tr>
+				<tr>
+					<td>Luminaire</td>
+					<td>Luminaire sur pieds. Dimensions 185cm x 45cm</td>
+					<td>89</td>
+				</tr>
+				<tr>
+					<td>Chaise de jardin</td>
+					<td>Chaise de jardin en plastique</td>
+					<td>24</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="mt-100"></div>
+
+		<pre><code class="language-php">
+$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+$spreadSheet = $reader->load($file);
+$sheet = $spreadSheet->getActiveSheet();
+
+// Permet d'itérer sur les lignes du fichier
+$rows = $sheet->getRowIterator();
+
+// Récupère l'EntityManager (remplacer par PDO si vous n'utilisez pas Doctrine)
+$em = $doctrine->getManager();
+
+$i = 0;
+
+foreach($rows as $row) {
+	// On ignore la première ligne car elle contient les titres. Si vous n'avez pas les titres dans votre fichier, vous pouvez ignorer cette ligne.
+	if ($i === 0) {
+		$i++;
+		continue;
+	}
+
+	$product = new Product();
+
+	// Le nom du produit se situe sur la première colonne du fichier
+	$product->setName($sheet->getCell("A1")->getValue());
+
+	$product->setDescription($sheet->getCell("B1")->getValue());
+
+	// Il est nécessaire de cast la valeur car un string est retourné
+	$product->setPrice((int) $sheet->getCell("C1")->getValue());
+
+	// Enregistre la requête (remplacer par PDO si vous n'utilisez pas Doctrine)
+	$em->persist($product);
+}
+
+// Envoie les requêtes à la base de données (remplacer par PDO si vous n'utilisez pas Doctrine)
+$em->flush();
+		</code></pre>
+
+		<h2 class="mt-100">Exemple avec un fichier "sale"</h2>
+
+		<p>Pour cet exemple, imaginons un fichier incomplet.
+		</p>
+
+		<table class="mt-100">
+			<thead>
+				<tr>
+					<th>Nom du produit</th>
+					<th>Description</th>
+					<th>Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Table basse</td>
+					<td></td>
+					<td>145</td>
+				</tr>
+				<tr>
+					<td>Luminaire</td>
+					<td>Luminaire sur pieds. Dimensions 185cm x 45cm</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Chaise de jardin</td>
+					<td>Chaise de jardin en plastique</td>
+					<td>24</td>
+				</tr>
+			</tbody>
+		</table>
+
+	<div class="mt-100"></div>
+
+		<pre><code class="language-php">
+$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+$spreadSheet = $reader->load($file);
+$sheet = $spreadSheet->getActiveSheet();
+
+// Permet d'itérer sur les lignes du fichier
+$rows = $sheet->getRowIterator();
+
+// Récupère l'EntityManager (remplacer par PDO si vous n'utilisez pas Doctrine)
+$em = $doctrine->getManager();
+
+$i = 0;
+
+foreach($rows as $row) {
+	// On ignore la première ligne car elle contient les titres. Si vous n'avez pas les titres dans votre fichier, vous pouvez ignorer cette ligne.
+	if ($i === 0) {
+		$i++;
+		continue;
+	}
+
+	$product = new Product();
+
+	// Si pas de nom de produit ou de prix, on ignore la ligne
+	if ($sheet->getCell("A$i)->getValue() == null || $sheet->getCell("C$i)->getValue()) {
+		continue;
+	}
+
+	// Le nom du produit se situe sur la première colonne du fichier
+	$product->setName($sheet->getCell("A1")->getValue());
+
+	// On accepte qu'il n'y ait pas de description, mais on la remplace par le titre si elle n'existe pas
+	$product->setDescription($sheet->getCell("B1")->getValue() ? $sheet->getCell("B1")->getValue() : $sheet->getCell("A1")->getValue());
+
+	// Il est nécessaire de cast la valeur car un string est retourné
+	$product->setPrice((int) $sheet->getCell("C1")->getValue());
+
+	// Enregistre la requête (remplacer par PDO si vous n'utilisez pas Doctrine)
+	$em->persist($product);
+}
+
+// Envoie les requêtes à la base de données (remplacer par PDO si vous n'utilisez pas Doctrine)
+$em->flush();
+		</code></pre>
+
+		<p>Et voilà, c'est déja finit ! Si vous avez des questions, n'hésitez pas à me contacter par email: <a href="mailto:contact@paul-le-flem.fr" class="simple-link">contact@paul-le-flem.fr</a></p>
+
+	</div>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" integrity="sha512-y9FANphufav/MTLC4rIuhPP8EQOxWZcDPJYMHavSGjRsT7isO1YIVRIQxLXycWZfjdcjdxset4At0jPKszJeAw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script>
+		hljs.highlightAll();
+	</script>
+
+{% endblock %}

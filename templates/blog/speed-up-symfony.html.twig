@@ -21,7 +21,7 @@
 
 		<div class="mt-100"></div>
 		<h2>Optimisation de la vitesse du site</h2>
-		<p>Un site rapide est primordial, car les visiteurs n'hésitent pas à le quitter s'il prend trop longtemps à charger. Et s'il reste, il peut rapidement devenir frustré.</p>
+		<p>Un site rapide est primordial, car les visiteurs n'hésitent pas à le quitter s'il prend trop longtemps à charger. Et s'ils restent, ils peuvent rapidement devenir frustrés.</p>
 		<p>Il faut donc prendre soin d'envoyer le minimum de données au chargement de la page, et cela passe par les moyens suivant :</p>
 
 		<div class="mt-100"></div>
@@ -37,7 +37,7 @@
 		<p>Le lazy-loading est le principe de ne pas charger les éléments en dessous du viewport au chargement initial. Il peut être intéressant l'ajouter un attribut
 			<code class="language-html hljs">loading="lazy"</code>
 			à une balise img par exemple, pour en diférrer le chargement.</p>
-		<p>Parfois, comme pour une vidéo youtube, il est nécessaire d'écrire un peu de Javascript qui va créer l'iframe au chargement de la page :</p>
+		<p>Parfois, comme pour une vidéo Youtube, il est nécessaire d'écrire un peu de Javascript qui va créer l'iframe au chargement de la page :</p>
 
 		<pre>
 		<code class="language-javascript hljs">window.addEventListener("DOMContentLoaded", () => {
@@ -51,13 +51,67 @@
 
 		<div class="mt-100"></div>
 		<h3>Configurer le cache du serveur web</h3>
-		<p>Le cache du serveur permet une plus grande rapidité d'accès aux données. Il est important d'utiliser des règles adaptées. Selon le serveur utilisé (Apache, Nginx...), les règles sont différentes, mais peuvent facilement être trouvé sur internet.</p>
+		<p>Le cache du serveur permet une plus grande rapidité d'accès aux données. Il est important d'utiliser des règles adaptées. Selon le serveur utilisé (Apache, Nginx...), les règles sont différentes, mais peuvent facilement être trouvé sur internet. Il est important de spécifier les règles pour chaque type de ressources, car certaines ressources sont amenés à changer plus souvent que d'autres (voir le tableau exemple en dessous).</p>
+		<p>Personellement, je suis adepte d'une longue durée de vie du cache, quitte à devoir le vider manuellement après mise en ligne de modifications. Cela permet de meilleurs performances, et un meilleur controle lorsque l'on souhaite le vider.</p>
+
+		<table class="mt-100">
+			<thead>
+				<tr>
+					<th>Type de fichier</th>
+					<th>Durée de vie du cache</th>
+					<th>Explications</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>CSS / Javascript</td>
+					<td>1 jours - 1 semaine</td>
+					<td>Les fichiers CSS et Javascript sont amené à changer régulièrement, au fur et a mesure que vous mettez à jour votre site. Ces fichiers ne changerons jamais ou rarement de noms, et il est donc nécessaire de définir une durée de vie pas trop élevée</td>
+				</tr>
+				<tr>
+					<td>images</td>
+					<td>6 mois - 1 an</td>
+					<td>Les images elles ne sont que très rarement amenés à changer. De plus, dans le cas ou vous remplacez une image de votre site, le nom changera, ce qui créera une nouvelle entrée dans le cache de votre serveur, supprimant la nécessité de le vider.</td>
+				</tr>
+				<tr>
+					<td>HTML</td>
+					<td>3mois - 6 mois - 1 an</td>
+					<td>Le HTML est la ressource principale de votre site. Il est important de le mettre en cache, avec une durée importante, car c'est à partir de lui que les autres ressources sont appelés.</td>
+				</tr>
+			</tbody>
+		</table>
 
 		<div class="mt-100"></div>
 
 		<h2>Utiliser des loaders</h2>
 		<p>Que ce soit une requête Ajax, un chargement de page avec Turbo Drive ou autres, un loader peut réduire la sensation d'attente, et ainsi rendre la navigation plus fluide.</p>
 		<p>En plus d'améliorer l'expérience, un loader est facile à installer, il suffit d'afficher / cacher un gif !</p>
+
+		<h2 class="mt-100">UX Design</h2>
+		<p>L'UX Design est un domaine large, je ne vais pas vous expliquer sont fonctionnement aujourd'hui (je ne suis pas UX Designer). Cependant, il est important de faire le maximum pour que l'utilisation du site soit la plus intuitive possible. Par exemple, faites attention à la taille des textes (pas trop petit), à l'emplacement des boutons, et aux couleurs utilisées (pas trop de couleurs, mais avec un contrast suffisament élevé)</p>
+		<p>Il est également important de ne pas surcharger une page. En effet, il est plus difficile de se reperer sur une page chargée, et un design minimaliste est généralement plus apprécié</p>
+
+		<p>Sachez qu'il en existe d'autres, comme Tailwind ou Foundation, mais ne les ayant pas testé moi même, je ne vous en venterais pas les avantages.</p>
+
+		<h2>Responsive</h2>
+		<p>Le "responsive" est la capacité d'un site à s'adapter aux différents appareils présents sur le marché. Si vous souhaitez que vos visiteurs passent un bon moment, il est important que votre site s'adapte aux appareils qu'ils utilisent.</p>
+		
+		<p>Aujourd'hui, environ 60 pourcent du traffic internet est sur appareil mobile. C'est donc plus de la moitié de vos visiteurs potentiels qui passerons par là. Il est donc conseillé de privilégier un développement "mobile first" (appareils mobiles en premier).</p>
+		
+		<p>Pour vous aider dans la conception de votre site mobile first ou l'intégration d'une version mobile sur votre site, vous avez la possibilité d'utiliser des librairies comme Bootstrap, qui, grâce à son système de grille, permet une adaptation à moindre frais vers la version mobile</p>
+
+		<h2 class="mt-100">Évitez les popups !</h2>
+		<p>Les popups, comme je suis certain que vous l'avez déja constaté, sont généralement mauvaise pour l'expérience utilisateur. Que ce soit pour demander un avis avant même que l'on ai eu l'occasion de voir le site, de demander un abonnement à une newsletter ou autre, elles sont généralement un frein à l'intéraction utilisateur, et peuvent même les faire fuire (personellement, je prend mes jambes à mon coups lorsque j'arrive sur ce genre de site)</p>
+
+		<h2 class="mt-100">Doser les animations</h2>
+		<p>Les animations sur un site internet peuvent être la cerise sur le gateau. Cependant, il ne faut pas en abuser. Ce qui fait la beauté des animations c'est leur relative discretion. Abuser d'animation risque de ralentir votre site, et ca, ca ne plait pas aux utilisateurs !</p>
+
+		<p>Toute fois, quelques animations discrètes peuvent apporter le petit quelque chose qui manquait à votre site, alors testez, et n'hésitez pas à les supprimer si vous trouvez que ca fait trop.</p>
+
+		<p>Pour animer votre site, vous pouvez par exemple utiliser Animate.css, une librairie css qui les facilite, ou encore Gsap. Attention encore une fois, il faut peser le pour et le contre : si votre site n'est déjà pas très rapide, est-ce vraiment pertinent d'ajouter encore une dépendance de plus ?</p>
+
+		<a href="https://animate.style/" target="_blank" rel="noopener noreferrer" class="simple-link">Animate.css</a>
+		<a href="https://greensock.com/gsap/" target="_blank" rel="noopener noreferrer" class="simple-link">Gsap</a>
 
 		<div class="mt-100"></div>
 		<h2>Turbo</h2>
@@ -94,8 +148,17 @@
 
 		<div class="mt-100"></div>
 		<h2>Pour conclure</h2>
+		
 		<p>Turbo est une excellente librairie Javascript que je recommande largement. Elle propose des améliorations litéralement gratuites, et, via les autres librairie d'excellentes fonctionnalité en terme d'expérience et de rapidité.</p>
 		<p>Je l'ai découvert récemment, et l'utilise désormais pour mes nouveaux projets !</p>
+
+		<p>Pour ce qui est de l'optimisation de la vitesse du site, je vous invite à tester la vitesse de vos sites sur <a href="https://gtmetrix.com/" target="_blank" rel="noopener noreferrer" class="simple-link">GT Metrix</a> ou <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" class="simple-link">PageSpeed Insights</a>, les deux utilisant la même technologie : Google Lighthouse. Vous pouvez également installer l'extension Lighthouse pour Chrome, qui permet de tester les sites localement.</p>
+
+		<h2 class="mt-100">Pour approfondir / sources</h2>
+		<p>Si vous souhaitez en savoir plus sur comment rendre votre site plus agréable d'utilisation, je vous invite à consulter les ressources suivantes :</p>
+
+		<a href="https://developers.google.com/speed/docs/insights/v5/about?hl=fr" target="_blank" rel="noopener noreferrer" class="simple-link">Documentation PageSpeed Insight</a>
+		<a href="https://medium.com/@owayalex/ux-1-les-4-probl%C3%A8mes-de-la-popup-745809fdf5f3" target="_blank" rel="noopener noreferrer" class="simple-link">Les problèmes des popups</a>
 
 	</div>
 

@@ -1,0 +1,139 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Développement d'un site e-commerce
+{% endblock %}
+
+{% block description %}
+	Conception d'un système de produit configurable, création du back-office, intégration de Stripe...
+{% endblock %}
+
+{% block content %}
+	<div class="project-header">
+		<h2 class="project-title">ESP Automobiles - site catalogue</h2>
+		<h1 class="project-main-title">Un catalogue toujours à jour</h1>
+		<a href="https://www.espautomobiles.fr" class="project-link" target="_blank">espautomobiles.fr</a>
+	</div>
+
+	<div class="image-zoom">
+		<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_accueil_projet_esp_automobile.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="header-mockup">
+	</div>
+
+	<div class="container mt-100">
+		<div class="text-block">
+			<div class="title">
+				<h2>LE CLIENT</h2>
+			</div>
+			<div class="content">
+				<p>ESP Automobiles est un concessionnaire automobiles, spécialisé dans la vente de véhicules premium, neuf ou occasion. Ils assurent une prestation de qualité, en inspectant eux-mêmes chaque véhicule mis en vente, et proposent une garantie minimale de 6 mois.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>CAHIER DES CHARGES</h2>
+			</div>
+			<div class="content">
+				<p>L'entreprise possédait déjà un site viellissant pour la vente de ces véhicules. Cependant, celui-ci ne générait pas assez de traffic à cause de son look has-been. Ils ont donc choisit de faire appel à BH Internet pour en faire la refonte. C'est un site catalogue administrable. Les fonctionnalités demandés sont les suivantes : créer un back-office permettant la gestion des véhicules affichés sur la page d'accueil, un formulaire de contact pour faire reprendre un véhicule, et l'intégration de l'API de l'argus, pour lister les véhicules de l'entreprise.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row skills">
+			<div class="col-md-4">
+				<h3>Technologies utilisées</h3>
+				<ul>
+					<li>Symfony 5.4</li>
+					<li>PHP 7.4</li>
+					<li>MySQL</li>
+					<li>Javascript</li>
+					<li>API Argus</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Conditions de travail</h3>
+				<ul>
+					<li>Réalisé à partir d'une maquette</li>
+					<li>Travail sur 2 mois</li>
+					<li>En entreprise</li>
+					<li>Travail seul</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Rôle</h3>
+				<ul>
+					<li>Conception technique</li>
+					<li>Développement</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception du front end</h2>
+			</div>
+			<div class="content">
+				<p>J'ai été chargé du développement de ce site. J'ai donc fait le choix de commencer par développer le front-end, ce qui permet au client d'avoir une vision sur le produit final plus rapidement dans le développement du projet.</p>
+				<p>J'ai utilisé la bibliothèque Bootstrap pour m'aider dans la conception, notamment pour faciliter la transition au format mobile.</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title noanim">
+				<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_fetch_xml_from_api.png") }}" alt="Récupération du fichier XML depuis le serveur FTP">
+				<p>Récupération du fichier XML depuis le serveur FTP</p>
+			</div>
+			<div class="content">
+				<h2>Intégration de l'API Argus</h2>
+				<p>L'API Argus est une API "legacy", développé sous le standard SOAP. Elle fournit un serveur FTP ou récupérer un fichier XML comme endpoint.</p>
+
+                <p>Le problème avec ce genre d'API, c'est qu'il est impossible de récupérer uniquement une partie des données. Pour recherche un véhicule, il est nécessaire de parcourir le fichier à sa recherche, notamment avec la fonction <code>xpath</code>, qui permet de filtrer du XML de manière basique.</p>
+
+				<p>Pour tenter d'optimiser le fonctionnement, j'ai pris l'initiative de faire une copie du fichier XML localement sur le serveur. Au chargement de la page, le service
+					<code>VehiculeList</code>
+					est appelé, il a pour rôle de retourner la liste des véhicules à afficher. Il vérifie la dernière mise à jour du fichier, stoqué en base de données. Si elle date de plus de deux heures, le service fait alors appel à l'API pour récupérer le fichier à jours. Une durée de deux heures à été choisit pour avoir un bon compromis entre la performance du site, et la nécessité de tenir les véhicules à jour (vendus ou ajoutés).</p>
+
+                <p>Un avantage important d'effectuer une copie locale du fichier, c'est que si l'API cesse de fonctionner, le site n'aura pas de problème, et pourra toujours lister les véhicules de l'ancienne version du fichier, en attendant que l'API soit à nouveau disponible.</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Système de filtre</h2>
+			</div>
+			<div class="content">
+				<p>Il à été demandé d'ajouter au site un système de filtre sur le site, car le nombre de véhicules était important. Les critères suivant on été retenus pour le filtre :</p>
+				<ul>
+					<li>État (neuf / occasion)</li>
+					<li>Marque</li>
+					<li>Modèle</li>
+					<li>Énergie (essence / diesel / électrique)</li>
+					<li>Boite (manuelle / automatique)</li>
+					<li>Budget (min / max)</li>
+				</ul>
+				<p>L'implémentation des filtres fut plus compliqué qu'habituellement, du fait que les véhicules ne proviennent pas de la base de données mais d'un fichier XML. J'ai donc utilisé les fonctions native de PHP
+					<code>simplexml</code>
+					pour convertir le fichier en un object
+					<code>StdClass</code>
+					(classe générique de PHP), puis utilise un service qui permet de boucler sur les véhicules, et détermine leurs correspondance aux filtres.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_filtre_esp_automobiles.png") }}" alt="Système de filtre">
+		<p>Système de filtre</p>
+
+        <div class="text-block">
+            <div class="title">
+                <h2>Conception du back-office</h2>
+            </div>
+            <div class="content">
+                <p>Les back-office doit permettre la gestion des véhicules "à la une", ainsi que ceux présents dans le slider de la page d'accueil.</p>
+                <p>J'ai choisis de proposer la même interface coté administrateur que coté utilisateur, premièrement pour éviter de devoir développer un deuxième module similaire et également permettre de mieux visualiser ce à quoi ressemble le front-end.</p>
+                <p>Les véhicules n'étant pas stoqués en base de donnée, j'ai créé une unique table, regroupant les véhicules du slider et à la une, différenciés par un boolean.</p>
+            </div>
+        </div>
+	</div>
+
+{% endblock %}

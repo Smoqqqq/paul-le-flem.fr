@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Erreur 404{% endblock %}
+
+{% block content %}
+
+	<div class="project-header">
+		<h1 class="project-main-title">Oups ! cette page n'existe pas...</h1>
+		<a href="{{ path("app_home") }}" class="project-link">Retour à l'accueil</a>
+	</div>
+
+{% endblock %}

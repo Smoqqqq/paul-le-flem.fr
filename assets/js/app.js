@@ -21,7 +21,7 @@ window.addEventListener("turbo:load", () => {
     const cursor = document.getElementById('cursor');
     const cursor_triggers = document.getElementsByClassName("cursor_trigger");
     const cursor_soon_triggers = document.getElementsByClassName("cursor_soon_trigger");
-    const cursor_opacity_triggers = document.querySelectorAll(".cursor_opacity_trigger, .simple-link");
+    const cursor_opacity_triggers = document.querySelectorAll(".cursor_opacity_trigger, .simple-link, .project-link");
 
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = String(e.x + "px");
@@ -48,6 +48,19 @@ window.addEventListener("turbo:load", () => {
             cursor.classList.remove('hovering');
             cursor.innerText = "";
         })
+    }
+
+    if (innerWidth < 992) {
+        for (let i = 0; i < cursor_soon_triggers.length; i++) {
+            cursor_soon_triggers[i].addEventListener('click', () => {
+                cursor.style.display = "grid";
+                cursor.innerText = "BIENTÔT";
+                cursor.classList.add('hovering');
+            })
+            addEventListener("scroll", () => {
+                cursor.style.display = "none";
+            })
+        }
     }
 
     for (let i = 0; i < cursor_opacity_triggers.length; i++) {

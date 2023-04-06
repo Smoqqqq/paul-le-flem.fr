@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Erreur {{ status_code }}{% endblock %}
+
+{% block content %}
+
+	<div class="project-header">
+		<h2 class="project-title">{{ status_code }} - {{ status_text }}</h2>
+		<h1 class="project-main-title">Oups ! une erreur est survenue...</h1>
+		<a href="{{ path("app_home") }}" class="project-link">Retour à l'accueil</a>
+	</div>
+
+{% endblock %}

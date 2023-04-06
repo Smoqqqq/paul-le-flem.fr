@@ -8,6 +8,7 @@ body {
     margin: 0px;
     color: white;
     background: $theme;
+    overflow-x: hidden;
 }
 
 h2 {
@@ -215,8 +216,11 @@ img {
     h2 {
         margin-top: 0px;
     }
+
+    margin-bottom: $spacer;
     
     @media (max-width: $mobile) {
         margin: 0px -15px;
+        margin-bottom: calc($spacer / 2);
     }
 }

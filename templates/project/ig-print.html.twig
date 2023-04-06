@@ -1,0 +1,177 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Développement d'un site e-commerce
+{% endblock %}
+
+{% block description %}
+	Conception d'un système de produit configurable, création du back-office, intégration de Stripe...
+{% endblock %}
+
+{% block content %}
+	<div class="project-header">
+		<h2 class="project-title">IG Print - e-commerce</h2>
+		<h1 class="project-main-title">Une boutique en ligne personnalisée</h1>
+		<a href="https://impressionrapide.fr" class="project-link" target="_blank">impressionrapide.fr</a>
+	</div>
+
+	<div class="image-zoom">
+		<img src="{{ asset("build/images/projets/igprint/paul_le_flem_accueil_projet_ig_print.png") }}" alt="Mockup du portfolio de Agathe Verasdonck" class="header-mockup">
+	</div>
+
+	<div class="container mt-100">
+		<div class="text-block">
+			<div class="title">
+				<h2>LE CLIENT</h2>
+			</div>
+			<div class="content">
+				<p>IG Print est une entreprise d'imprimerie, qui propose la customisation de toute leur gamme de produit, avec plusieurs options disponibles pour chaque produit.</p>
+				<p>Déja présent sur internet grâce à leur ancien site réalisé en Prestashop (CMS dédié au e-commerce), l'entreprise a souhaité donner un nouveau visage à leur site viellissant et qui comportait plusieurs bugs importants.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>CAHIER DES CHARGES</h2>
+			</div>
+			<div class="content">
+				<p>L'entreprise a donc demandé à BH Internet (agence web spécialisée en sites personnalisés et référencement), de créer une version 2 du site, en adaptant le design et proposant quelques nouvelles fonctionnalitées.</p>
+				<p>La demande fut la suivante : créer un site e-commerce administrable, avec la possibilité d'ajouter les produits depuis un back-office, de pouvoir ajouter différentes options prédéfinies (couleur, papier, format, support...), ainsi que pouvoir configurer un prix pour chacune des combinaisons d'options disponibles pour le produit. Un système de panier et compte utilisateur était donc nécessaire, pour pouvoir passer commande et consulter son historique. Enfin il me fut demander de créer un système d'emails automatiques configurables, pour les différentes étapes d'une commande.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row skills">
+			<div class="col-md-4">
+				<h3>Technologies utilisées</h3>
+				<ul>
+					<li>Symfony 5.4</li>
+					<li>PHP 7.4</li>
+					<li>MySQL</li>
+					<li>Javascript - Ajax</li>
+					<li>Stripe</li>
+					<li>PhpSpreadsheet</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Conditions de travail</h3>
+				<ul>
+					<li>Réalisé à partir d'une maquette</li>
+					<li>Travail sur 3 mois</li>
+					<li>En entreprise</li>
+					<li>Travail seul</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Rôle</h3>
+				<ul>
+					<li>Conception technique</li>
+					<li>Développement</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception du front end</h2>
+			</div>
+			<div class="content">
+				<p>J'ai été chargé du développement de ce site. J'ai donc fait le choix de commencer par développer le front-end, ce qui permet au client d'avoir une vision sur le produit final plus rapidement dans le développement du projet.</p>
+				<p>J'ai utilisé la bibliothèque Bootstrap pour m'aider dans la conception, notamment pour faciliter la transition au format mobile.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception du système de produit</h2>
+			</div>
+			<div class="content">
+				<p>Les produits proposés à la vente par IG Print sont relativement complexes : ils comportent les données standard (nom, description, image...), mais sont également largement configurables. J'ai donc dû imaginer un système permettant la gestion de toutes ces configurations. J'ai choisit pour cela de créer une table correspondant à chaque option des produits (<code>Color</code>,
+					<code>Finishing</code>,
+					<code>Size</code>,
+					<code>Support</code>...), reliés par une relation
+					<code>OneToOne</code>
+					avec le produit.</p>
+				<p>Cette conception permet alors de visualiser un produit avec toutes ces options depuis la page dédiée.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset("build/images/projets/igprint/paul_le_flem_configuration_produit_ig-print.png") }}" alt="Page de configuration des produits">
+		<p>Page de configuration d'un produit</p>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception de la page de configuration</h2>
+			</div>
+			<div class="content">
+				<p>Pour configurer le produit, j'ai développé une page correspondant à la maquette fournie par le designer de mon entreprise. Pour rendre cette page dynamique, j'ai dû ajouter du Javascript, de manière à récupérer les prix en fonction des options choisies au clic. J'ai donc créé une fonction
+					<code>Ajax</code>, qui fait appel à une route API que j'ai développé, qui permet de récupérer le prix du produit en fonction des identifiants des options qu'elle reçoit. De cette manière, le client a directement une vision sur le prix et ne doit pas attendre la page suivante pour voir le prix que le produit va lui coûter.</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Conception du back-office</h2>
+			</div>
+			<div class="content">
+				<p>Pour alimenter le site en produit et configurer leurs options, il m'as été demandé de créer un back-office. Le back-office comporte quatres sections : les produits, les catégories de produits, les commandes et les statuts de commandes. J'ai commencé par la création du CRUD (Create, Read, Update, Delete) des produits, car cela me semblait être la partie la plus importante.</p>
+				<p>Pour que l'ajout des produits soit le plus simple possible, j'ai mis en page la configuration des options de la même manière que dans le front, ce qui permet de mieux s'y retrouver. Cette configuration est également implémentée en <code>Ajax</code>, ce qui permet de ne pas perdre de temps à chaque ajout d'option.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset("build/images/projets/igprint/paul_le_flem_back_office_produit.png") }}" alt="Page d'ajout / modification d'un produit du back-office">
+		<p>Page d'ajout / modification d'un produit du back-office</p>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Ajout des prix</h2>
+			</div>
+			<div class="content">
+				<p>Une fois les options définies, il est nécessaire de renseigner un prix pour chacunes d'elles. Pour ce faire, j'ai créé une page "remplir les prix manquants". Cette page récupère toutes les options avec un prix manquant pour le produit et invite l'utilisateur à les remplir. Si un prix n'est pas renseigné, l'option est considérée comme "indisponible".</p>
+				<p>Une entitée <code>Price</code> représente une combinaison spécifique d'options sur un produit, une variation du produit.</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Le problème</h2>
+			</div>
+			<div class="content">
+				<p>Une fois le back-office développé, nous l'avons présenté au client, qui en fut très content. Cependant, étant donnée le nombre de produits et d'options proposés par IG Print, il aurait été très chronophage de tout rentrer manuellement. En effet, rien que le produit "Flyer" comporte à lui seul plus de 500 combinaisons différentes, une vrai perte de temps si on le fait manuellement.</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>La solution</h2>
+			</div>
+			<div class="content">
+				<p>J'ai proposé, à la suite d'un rendez-vous, de développer un système d'import via un fichier excel. En effet, le client utilisait déjà excel pour le calcul de ses prix et il fut beaucoup plus simple pour lui de renseigner les prix de cette manière.</p>
+				<p>Pour ce faire, j'ai utilisé la bibliothèque <a href="https://github.com/PHPOffice/PhpSpreadsheet" class="simple-link" target="_blank" rel="noopener noreferrer">PHPOffice / PhpSpreadsheet</a>, qui permet la lecture / écriture de tableau excel (.xlsx, .csv...) via le langage PHP.</p>
+				<p>Le code ensuite est plutôt simple : boucler sur chaque ligne du fichier, lire le nom du produit (en première colonne), le créer si il n'existe pas, puis créer toutes les options de la ligne (si elle n'existent pas), puis créer un prix correspondant (entitée <code>Price</code>).</p>
+				<p>Pour rendre cette fonctionnalitée plus complète, j'ai ajouté la possibilité d'archiver les produits précédents au moment de l'import, de manière à pouvoir plus facilement effectuer une mise à jour complète des produits.</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Archiver ?</h2>
+			</div>
+			<div class="content">
+				<p>Archiver, oui ! le site proposant un historique des achats pour les clients, il n'est donc pas possible de supprimer les produits, leurs options et prix. Il est donc impossible de supprimer quoi que ce soit sur le site ! Cependant, il est quand même nécessaire d'archiver certains produits ou options, si l'entreprise ne les proposent plus. J'ai donc choisit de proposer l'archivage à la place de la suppression. La majorité des entités du projet ont donc une colonne 'active', qui représente leur état (actif ou archivé).</p>
+			</div>
+		</div>
+
+		<div class="text-block">
+			<div class="title">
+				<h2>Système de payement</h2>
+			</div>
+			<div class="content">
+				<p>Le site étant un e-commerce, j'ai dû intégrer une solution de payement. La solution retenue par le client fut Stripe, système de payement leader du marché. Nous avons opté pour la redirection vers la page de payement hébergée par Stripe, pour des questions de simplicité de mise en place et de sécurité. L'utilisateur est ensuite redirigé vers la page payement accepté. Pour sécuriser cette page (elle à pour rôle de valider la commande dans la base de données), j'ai choisit d'utiliser un token (chaine de caractères aléatoires), transmit à Stripe au moment de l'envoie vers la page. Cela permet de bloquer l'accès à la page, car seul notre serveur et celui de Stripe y ont accès. De plus, un token est lié uniquement à une commande et est consommé une fois la commande validée. Il est donc impossible de l'utiliser plusieurs fois.</p>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

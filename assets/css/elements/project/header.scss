@@ -32,6 +32,10 @@
         @media (max-width: $mobile) {
             font-size: 40px;
         }
+
+        @media (max-width: 768px) {
+            font-size: 28px;
+        }
     }
 
     @media (max-width: $mobile) {

@@ -112,6 +112,32 @@
 				</div>
 			</a>
 
+			<a href="{{ path("app_project_ig_print") }}" class="project-preview cursor_trigger">
+				<img src="{{ asset("build/images/projets/igprint/paul_le_flem_cover_igprint.png") }}" alt="Image de couverture IG Print" class="preview"/>
+				<div class="project-title">
+					Site e-commerce
+				</div>
+				<div class="project-name">
+					IG Print
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</a>
+
+			<a href="{{ path("app_project_esp_automobiles") }}" class="project-preview cursor_trigger">
+				<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_cover_esp.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
+				<div class="project-title">
+					Site catalogue
+				</div>
+				<div class="project-name">
+					ESP Automobiles
+				</div>
+				<div class="project-date">
+					2022
+				</div>
+			</a>
+
 			<div class="project-preview cursor_soon_trigger">
 				<img src="{{ asset("build/images/projets/un-jeune-une-alternance/cover.jpg") }}" alt="Image de couverture Un jeune une alternance" class="preview"/>
 				<div class="project-title">
@@ -139,12 +165,25 @@
 			</div>
 
 			<div class="project-preview cursor_soon_trigger">
-				<img src="{{ asset("build/images/projets/igprint/paul_le_flem_cover_igprint.png") }}" alt="Image de couverture IG Print" class="preview"/>
+				<img src="{{ asset("build/images/projets/anglais-sans-probleme/paul_le_flem_cover_anglais_sans_probleme.jpg") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
 				<div class="project-title">
-					Site e-commerce
+					Site vitrine
 				</div>
 				<div class="project-name">
-					IG Print
+					Anglais sans problème
+				</div>
+				<div class="project-date">
+					2021
+				</div>
+			</div>
+
+			<div class="project-preview cursor_soon_trigger">
+				<img src="{{ asset("build/images/projets/form-part/paul_le_flem_form_part_cover.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
+				<div class="project-title">
+					Package npm pour la mise en page
+				</div>
+				<div class="project-name">
+					form part
 				</div>
 				<div class="project-date">
 					2022
@@ -152,12 +191,12 @@
 			</div>
 
 			<div class="project-preview cursor_soon_trigger">
-				<img src="{{ asset("build/images/projets/espautomobiles/paul_le_flem_cover_esp.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
+				<img src="{{ asset("build/images/projets/form-part-validator/paul_le_flem_form_part_validator_cover.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
 				<div class="project-title">
-					Site catalogue
+					Package npm pour la validations des données
 				</div>
 				<div class="project-name">
-					ESP Automobiles
+					form part validator
 				</div>
 				<div class="project-date">
 					2022
@@ -167,10 +206,35 @@
 		</div>
 	</div>
 
-	<div id="blog"></div>
+	<div id="faq"></div>
 
 	<div class="container">
-		{% include "blog/search.html.twig" %}
+		<h2 class="large">Foire aux questions</h2>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h3 class="mt-100">Qui suis-je ?</h3>
+				<p>Je m'appelle Paul, j'ai 20 ans et je suis développeur web. Je suis passionné par la programmation, et en ai fait mon passe temps favoris.</p>
+
+
+				<h3 class="mt-100">Quelles langages utilise-tu ?</h3>
+				<p>Actuellement, mes compétences sont majoritairement centrées sur le développement web. Je maitrise les langages PHP, Javascript, ainsi que HTML et CSS. Cependant, étant passionné de programmation, j'ai également des bases dans différentes technologies avec lesquels j'aime expérimenter, ou que j'ai appris en cours. J'ai donc des bases en programmation Java, C, C#, Rust et Scala. J'ai également eu l'occasion d'utiliser le langage ARDUINO au cours de mon année de terminale, qui est un langage pour l'embarqué (cartes Arduino), sous-ensemble du langage C.</p>
+
+				<h3 class="mt-100">Quels technologies utilise tu ?</h3>
+				<p>Outre les langages de programmation, je maitrise également différents outils et technologies, qui sont nécessaire au développement d'applications : J'utilise GitHub pour le stockage de mes projets personnels et au travail. J'ai de l'expérience avec Platform.sh, un 'PAAS' (Platform as a service), environnement cloud permettant l'intégration continue. J'utilise le logiciel FileZilla comme client FTP, pour les sites n'utilisant pas l'intégration continue.</p>
+			</div>
+			<div class="col-md-6">
+				<h3 class="mt-100">Qu'ai-je fait comme études ?</h3>
+				<p>J'ai fait un baccalauréat STI2D (Sciences et Technologies de l'Industrie et du Développement Durable), au lycée Geoffroy Saint Hillaires d'Étampes (91). Après avoir obtenu mon bac, j'ai décidé de poursuivre vers un BTS SIO, option SLAM (Solutions Logiciels et Applications Métiers), au sein de l'Utec de Avon.J'ai effectué cette formation en alternance, au sein d'une agence web : BH Internet.</p>
+				<p>Actuellement je suis en Bachelor Développement et Data à l'Efrei Paris, également en alternance, et souhaite poursuivre en cursur ingénieur.</p>
+
+				<h3 class="mt-100">Est-tu en recherche d'emploi ?</h3>
+				<p>Pas vraiment. Je suis actuellement en recherche d'alternance pour suivre un cursus ingénieur en alternance. Je recherche un poste de développeur back-end ou bien full-stack.</p>
+
+				<h3 class="mt-100">Quelle est ta spécialité ?</h3>
+				<p>Je suis spécialisé dans le développement web, principalement le développement d'applications avec PHP et Symfony. C'est avec ce langage et ce framework que j'ai le plus d'experience, et j'apprécie beaucoup leur utilisation. Familier avec leurs écosystèmes, c'est avec ces technologies que je suis le plus efficace.</p>
+			</div>
+		</div>
 	</div>
 
 {% endblock %}
