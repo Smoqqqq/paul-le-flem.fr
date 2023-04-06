@@ -40,4 +40,10 @@ class BlogController extends AbstractController
     {
         return $this->render('blog/developers-qualities.html.twig');
     }
+    
+    #[Route('/principes-solid', name: 'app_blog_solid_principles')]
+    public function solidPrinciples(): Response
+    {
+        return $this->render('blog/solid.html.twig');
+    }
 }

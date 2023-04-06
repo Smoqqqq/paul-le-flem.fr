@@ -1,0 +1,284 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Comment importer des produits via un fichier excel avec PhpSpreadSheet
+{% endblock %}
+
+{% block description %}
+	Découvrez comment remplir facilement votre base de donnée en important vos produits depuis un fichier excel
+{% endblock %}
+
+{% block content %}
+
+	<div class="project-header">
+		<h1 class="project-main-title">Faciliter l'ajout de produits en important depuis excel</h1>
+	</div>
+
+	<div class="container">
+		<p>Aujourd'hui, j'ai décidé de me pencher sur les principes SOLID.</p>
+
+		<p>SOLID est un ensemble de principes, conçus pour aider les développeurs à produire des logiciels plus faciles à maintenir, étendre et comprendre.</p>
+		<p>Ces principes ont été introduits pour la première fois par Robert C. Martin dans son livre de 2000, "Agile Software Development, Principles, Patterns, and Practices", et sont devenus une partie fondamentale des pratiques modernes de développement de logiciels.</p>
+
+		<p>L'acronyme SOLID signifie :</p>
+
+		<ul>
+			<li>S - Principe de responsabilité unique (SRP - Single Responsibility Principle)</li>
+			<li>O - Principe ouvert/fermé (OCP - Open/Closed Principle)</li>
+			<li>L - Principe de substitution de Liskov (LSP - Liskov Substitution Principle)</li>
+			<li>I - Principe de ségrégation d'interface (ISP - Interface Segregation Principle)</li>
+			<li>D - Principe d'inversion de dépendance (DIP - Dependency Inversion Principle)</li>
+		</ul>
+
+		<p>Chacun de ces principes aborde un aspect spécifique de la conception, et, réunit, offrent une ligne directrice aux développeurs.</p>
+
+		<h2 class="mt-100">Single Responsibility Principle - Principe de responsabilité unique</h2>
+		<p>Le principe de responsabilité unique implique qu'une classe ou fonction ne doit avoir qu'une unique responsabilité. Ce principe permet d'assurer une meilleure compréhension de la base de code, et permet de tester et modifier plus simplement notre code.</p>
+
+		<p>Ce principe incite les développeurs à développer des composants plus cohérent, qui ne gèrent pas trop de choses à la fois.</p>
+
+		<p>Supposons que nous ayons une classe
+			<code>User</code>
+			qui gère la validation des utilisateurs et l'enregistrement de leurs informations personnelles. Cette classe a deux responsabilités distinctes : valider les informations des utilisateurs et enregistrer les informations des utilisateurs dans la base de données. Pour respecter le principe SRP, nous pouvons diviser cette classe en deux classes distinctes :</p>
+
+		<pre><code class="language-php mt-100">
+class UserValidator {
+    public function validate(User $user): bool {
+        // code to validate user data
+        return $isValid;
+    }
+}
+
+class UserPersistor {
+    public function save(User $user) {
+        // code to save user data to database
+    }
+}
+
+class UserController {
+    public function __construct(private UserValidator $validator, private UserPersistor $database) {
+    }
+
+    public function createUser(User $user) {
+        if ($this->validator->validate($user)) {
+            $this->database->save($user);
+            // code to return success response
+        } else {
+            // code to return error response
+        }
+    }
+}
+        </code></pre>
+
+		<p class="mt-100">Dans cet exemple, la classe
+			<code>UserValidator</code>
+			est responsable de la validation des données utilisateur, tandis que la classe
+			<code>UserPersistor</code>
+			est responsable de l'enregistrement des données utilisateur dans la base de données. La classe
+			<code>UserController</code>
+			utilise ces deux classes pour créer un utilisateur. En divisant les responsabilités en plusieurs classes, nous respectons le principe de responsabilité unique et rendons le code plus facile à comprendre, à tester et à modifier.</p>
+
+		<h3>Qu'est ce que cela apporte ?</h3>
+		<p>Imaginons que demain, on vous demande de modifier le SGBD (Système de gestion de base de données). Passer de l'implémentation actuelle, disons MySQL, à MongoDB. Sans le principe de responsabilité unique, il serait nécessaire de modifier la classe
+			<code>User</code>, malgrès que la majorité du code de cette classe n'ai rien à voir avec la base de données.</p>
+		<p>En applicant le principe de responsabilité unique, la seule classe à modifier sera alors la classe
+			<code>UserPersistor</code>. Cela permet de ne pas risquer de bugs au niveau de notre classe
+			<code>User</code>, qui n'as pas à être impacté par ce changement.</p>
+
+		<h2 class="mt-100">Open/closed principle - principe ouvert/fermé</h2>
+		<p>Le principe ouvert/fermé implique que le code produit doit être ouvert à l'extension, c'est à dire qu'il doit pouvoir supporter de nouvelle fonctionnalitées, mais doit être fermé à la modification. C'est à dire que les nouvelles fonctionnalitées doivent pouvoir êtres ajoutés sans avoir à modifier de code existant.</p>
+		<p>Le principe OCP encourage les développeurs à concevoir des classes qui sont suffisamment génériques pour être réutilisées et étendues, mais suffisamment spécifiques pour répondre aux besoins actuels. De cette façon, les développeurs peuvent ajouter de nouvelles fonctionnalités sans modifier le code existant, ce qui réduit le risque de bugs et de régressions.</p>
+		<p>Pour appliquer le principe OCP, vous pouvez utiliser des techniques telles que l'héritage, la composition et les interfaces. En utilisant l'héritage, vous pouvez créer de nouvelles classes qui héritent des propriétés et des méthodes de la classe de base, tout en ajoutant de nouvelles fonctionnalités. En utilisant la composition, vous pouvez combiner plusieurs classes pour créer une classe qui possède toutes les fonctionnalités nécessaires. En utilisant des interfaces, vous pouvez définir des contrats qui doivent être respectés par toutes les classes qui implémentent cette interface.</p>
+
+		<p>Supposons que nous voulions ajouter une fonctionnalité pour envoyer un e-mail de bienvenue à un nouvel utilisateur. Nous pourrions ajouter cette fonctionnalité à la classe UserController en modifiant la méthode createUser pour inclure du code pour envoyer un e-mail. Cependant, cela violerait le principe OCP, car nous modifierions la classe existante au lieu de l'étendre.</p>
+
+		<p>Voici comment nous pourrions appliquer le principe OCP pour ajouter cette fonctionnalité sans modifier la classe UserController. Nous pourrions créer une nouvelle classe UserEmailer qui est responsable d'envoyer des e-mails de bienvenue. La classe UserEmailer peut être injectée dans le constructeur de la classe UserController :</p>
+
+		<pre><code class="language-php mt-100">
+class UserValidator {
+    public function validate(User $user): bool {
+        // code to validate user data
+        return $isValid;
+    }
+}
+
+class UserPersistor {
+    public function save(User $user) {
+        // code to save user data to database
+    }
+}
+
+class UserEmailer {
+    public function sendWelcomeEmail(User $user) {
+        // code to send welcome email
+    }
+}
+
+class UserController {
+    public function __construct(private UserValidator $validator, private UserPersistor $database, private UserEmailer $emailer) {
+    }
+
+    public function createUser($userData) {
+        if ($this->validator->validate($userData)) {
+            $this->database->save($userData);
+            $this->emailer->sendWelcomeEmail($userData);
+            // code to return success response
+        } else {
+            // code to return error response
+        }
+    }
+}
+        </code></pre>
+
+        <p class="mt-100">Dans cet exemple, nous avons créé une nouvelle classe UserEmailer qui est responsable d'envoyer des e-mails de bienvenue. Nous avons injecté cette classe dans le constructeur de la classe UserController. La méthode createUser de la classe UserController appelle maintenant la méthode sendWelcomeEmail de la classe UserEmailer après avoir enregistré l'utilisateur dans la base de données.</p>
+
+        <p>En utilisant l'injection de dépendances, nous avons étendu la fonctionnalité de la classe UserController sans la modifier directement. De cette façon, nous avons respecté le principe ouvert/fermé et avons créé une classe qui peut être utilisée pour créer des utilisateurs et envoyer des e-mails de bienvenue.</p>
+
+        <h3>Qu'est ce que cela apporte ?</h3>
+        <p>Grace au principe ouvert/fermé, il est possible de minimiser la proportion de code existant à modifier, ce qui permet ainsi de minimiser l'introduction de bug dans du code 'legacy'</p>
+
+        <h2 class="mt-100">Liskov substitution principle - Principe de substitution de Liskov</h2>
+        <p>Le principe de substitution de Liskov (ou Liskov Substitution Principle en anglais), a été proposé par Barbara Liskov en 1987 et se concentre sur la relation entre les classes et les sous-classes dans une hiérarchie d'héritage.</p>
+        <p>Ce principe définit la règle suivante : un objet d'une classe dérivée (implémentant une interface), doit pouvoir être remplacé par n'importe quel objet implémentant la même interface.</p>
+        <p>Autrement dit, si une classe <code>A</code> implémente une interface <code>I</code>, alors un objet de classe <code>B</code>, implémentant également l'interface <code>I</code> doit pouvoir le remplacer, sans altérer le fonctionnement de l'application.</p>
+        <p>Cela fonctionne également avec l'héritage : si un objet de classe <code>A</code> est étendu par un objet de classe <code>B</code>, il doit être possible de remplacer l'objet <code>A</code> par l'objet <code>B</code>, tout en conservant le fonctionnement de l'application.</p>
+
+        <p>Prenons comme exemple le code suivant :</p>
+
+        		<pre><code class="language-php mt-100">
+interface UserEmailerInterface {
+    public function sendWelcomeEmail(User $user);
+}
+
+class UserEmailer implements UserEmailerInterface {
+    public function sendWelcomeEmail(User $user) {
+        // code to send welcome email
+    }
+}
+
+class FancyUserEmailer implements UserEmailerInterface {
+    public function sendWelcomeEmail(User $user) {
+        // code to send fancy welcome email
+    }
+}
+
+class UserController {
+    public function __construct(private UserValidator $validator, private UserPersistor $database, private UserEmailerInterface $emailer) {
+    }
+
+    public function createUser($userData) {
+        if ($this->validator->validate($userData)) {
+            $this->database->save($userData);
+            $this->emailer->sendWelcomeEmail($userData);
+            // code to return success response
+        } else {
+            // code to return error response
+        }
+    }
+}
+        </code></pre>
+
+        <p class="mt-100">Dans l'exemple ci-dessus, nous avons ajouté une nouvelle classe, <code>FancyUserEmailer</code>. Cette classe permet d'envoyer de joli mails, au lieu des mails simples de la classe <code>UserEmailer</code>. Pour mettre en place le principe de substitution de Liskov, nous avons ajouté une interface, <code>UserEmailerInterface</code>. L'ajout de cette interface permet de changer librement la classe envoyant les emails.</p>
+        <p>Grâce à elle, nous avons le choix entre les deux classes, <code>UserEmailer</code> et <code>FancyUserEmailer</code>.</p>
+        <p>Notez la modification du constructeur de la classe <code>UserController</code>, qui ne reçoit désormais plus un objet d'une classe définit, mais une interface. L'utilisation de l'interface est la clé de ce principe. Elle permet d'échanger librement d'implémentation.</p>
+
+        <h3>Quels sont les avantages ?</h3>
+
+        <p>Utiliser ce principe permet de réutiliser le code plus facilement, et de remplacer du code plus facilement. En effet, il ne sera alors nécessaire que de créer une nouvelle classe pour remplacer l'ancienne, sans se soucier du code qui l'utilise, puisqu'elle se doit de fonctionner de la même manière.</p>
+
+        <h2 class="mt-100">Interface segregation principle - principe de ségrégation des interfaces</h2>
+        <p>Le principe de ségrégation des interfaces stipule qu'une classe ne doit pas dépendre d'interfaces qu'elle n'utilise pas. En d'autres termes, une interface ne doit contenir que les méthodes dont la classe qui l'utilise a besoin. Cela permet de réduire les dépendances entre les classes et les interfaces, et de simplifier la maintenance et l'évolution du code.</p>
+
+        <p>Imaginons maintenant que nous souhaitons convertir le contenu des emails en HTML, pour pouvoir envoyer de joli mails. prenons en exemple le code suivant :</p>
+
+        <pre><code class="language-php mt-100">
+interface UserEmailerInterface {
+    public function sendWelcomeEmail(User $user);
+    public function convertToHtml(string $content): string;
+}
+
+class UserEmailer implements UserEmailerInterface {
+    public function sendWelcomeEmail(User $user) {
+        // code to send welcome email
+    }
+
+    public function convertToHtml(string $content): string 
+    {
+        // do nothing because we don't need this function
+        return $content;
+    }
+}
+
+class FancyUserEmailer implements UserEmailerInterface {
+    public function sendWelcomeEmail(User $user) {
+        // code to send fancy welcome email
+    }
+
+    public function convertToHtml(string $content): string 
+    {
+        // convert email to HTML
+        return $htmlConvertedEmail;
+    }
+}
+        </code></pre>
+
+        <p class="mt-100">Désormais, les classes <code>UserEmailer</code> et <code>FancyUserEmailer</code> devrons toutes les deux implémenter la méthode <code>convertToHtml()</code>. Cependant, la classe <code>UserEmailer</code> n'as pas besoin de cette fonctionnalitée, car elle ne sert qu'as envoyer des mails simple. Cependant, elle devra obligatoirement implémenter la méthode, même si elle ne sera pas utilisée.</p>
+        <p>La solution à se problème est kla ségrégation des interfaces. Pour cela, nous créerons une deuxième interface, permettant la conversion des emails en HTML :</p>
+
+                		<pre><code class="language-php mt-100">
+interface UserEmailerInterface {
+    public function sendWelcomeEmail(User $user);
+}
+
+interface HtmlEmailConverter {
+    public function convertToHtml(string $content): string;
+}
+
+class UserEmailer implements UserEmailerInterface {
+    public function sendWelcomeEmail(User $user) {
+        // code to send welcome email
+    }
+}
+
+class FancyUserEmailer implements UserEmailerInterface, HtmlEmailConverter {
+    public function sendWelcomeEmail(User $user) {
+        // code to send fancy welcome email
+    }
+
+    public function convertToHtml(string $content): string 
+    {
+        // convert email to HTML
+        return $htmlConvertedEmail;
+    }
+}
+        </code></pre>
+
+        <p class="mt-100">Grâce à ce changement, notre classe <code>UserEmailer</code> n'implémente que les fonctionnalités qui lui sont strictement nécessaire. Cela permet de réduire la quantitée de code à produire, et de produire un code plus propre et plus adapté.</p>
+        <p>Cela nous permet de supprimer la méthode sur la classe qui ne l'utilise pas, permettant alors au développeur de se concentrer sur le code qui est réelement important.</p>
+
+        <h3>Quels sont les avantages ?</h3>
+
+        <p>En regroupant les méthodes liées en interfaces distinctes, le principe ISP permet de définir des interfaces plus cohérentes et plus spécialisées, qui ne contiennent que les méthodes nécessaires pour chaque cas d'utilisation. Cela permet de réduire le couplage entre les classes et d'améliorer la modularité du code. Il devient alors plus simple à modifier, a maintenir et a tester.</p>
+
+        <h2 class="mt-100">Dependency inversion principle - principe d'inversion des dépendances</h2>
+        <p>Ce principe, le dernier des principes SOLID, préconise de dépendre des abstraction, plutôt que d'implémentation concrètes.</p>
+        <p>Plus précisement, cela signifie que le code de bas niveau (la classe <code>UserController</code> dans notre exemple) ne doit pas dépendre d'une implémentation, c'est à dire de <code>UserEmailer</code> ou <code>FancyUserEmailer</code>, mais plutôt d'une interface. Ainsi, le controller n'as pas à gérer l'instanciation des objets, et ne s'occupe pas d'une implémentation particulière</p>
+        <p>Ainsi, l'exemple précédant respecte ce principe, en utilisant <code>UserEmailerInterface</code> plutôt que <code>UserEmailer</code>.</p>
+
+        <h3>Quels sont les avantages ?</h3>
+        <p>L'utilisation du principe DIP permet de réduire le couplage, le code est moins dépendant des implémentations. Il permet également une plus grande flexibilité, en effet, l'utilisation d'interfaces permet de remplacer une implémentation par une autre sans se soucier de la classe qui l'utilise.</p>
+
+        <h2 class="mt-100">Conclusion</h2>
+        <p>Introduire les principes SOLID dans votre développement vous permettra de concevoir du code et des applications plus testables, plus facilement modifiables et maintenables. Ils sont la référence en terme de développement orienté objet, et sont important à connaitre pour un développeur.</p>
+        <p>L'utilisation de ces principes permet un gain de temps important sur la durée de vie du projet, en en facilitant la modification future, et vous permettent de produire du code plus sur (moins de bugs) et plus compréhensible par un autre développeur.</p>
+
+	</div>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" integrity="sha512-y9FANphufav/MTLC4rIuhPP8EQOxWZcDPJYMHavSGjRsT7isO1YIVRIQxLXycWZfjdcjdxset4At0jPKszJeAw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script>
+		hljs.highlightAll();
+	</script>
+
+{% endblock %}
