@@ -1,0 +1,124 @@
+.caracter-quizz {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    flex-direction: row;
+    background: var(--theme);
+}
+
+.caracter-quizz::after {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    content: "";
+    background: url("../img/cadre_textes.png");
+    background-size: cover;
+    pointer-events: none;
+}
+
+.caracter-quizz-body {
+    height: calc(100vh - 150px);
+    padding: 150px 0px 0px 0px;
+    width: 80vw;
+    color: white;
+}
+
+.caracter-quizz-body-tab {
+    margin: 25px;
+    padding: 25px;
+    font-size: 20px;
+    overflow-y: scroll;
+    height: calc(100vh - 250px);
+    border-left: 2px solid var(--theme-dark)
+}
+
+.caracter-quizz-body-tab h1 {
+    margin-top: 0px;
+}
+
+.caracter-quizz-nav {
+    padding: 165px 25px 150px 150px;
+}
+
+.caracter-quizz-nav-item {
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    width: 300px;
+    font-size: 25px;
+}
+
+.caracter-quizz-nav-item:hover {
+    color: var(--theme-dark);
+}
+
+.caracter-quizz-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    line-height: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.caracter-quizz-submit {
+    position: absolute;
+    right: 25px;
+    bottom: 15px;
+    padding: 10px 60px;
+    border: 2px solid white;
+    border-radius: 25px;
+    background: white;
+    color: var(--theme);
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.caracter-quizz-close:hover, .caracter-quizz-submit:hover {
+    background: var(--theme);
+    color: white;
+}
+
+fieldset {
+    border: none;
+}
+
+.caracter-quizz-notification {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: var(--theme);
+    transition: 0.3s;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.caracter-quizz-notification.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.caracter-quizz-retry, .caracter-quizz-finish {
+    border: 2px solid white;
+    padding: 10px 20px;
+    width: fit-content;
+    border-radius: 25px;
+    margin: 25px auto;
+    cursor: pointer;
+}

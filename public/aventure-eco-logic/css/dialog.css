@@ -1,0 +1,152 @@
+.dialog {
+    user-select: none;
+    transition: opacity, 0.5s;
+    line-height: 30px;
+    color: white;
+    font-weight: 300;
+    letter-spacing: 1px;
+    z-index: 99999;
+    position: relative;
+}
+
+.dialog-top {
+    background: var(--theme);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 30vh;
+    width: 80vw;
+    font-size: 24px;
+    padding: 5vh 10vw;
+    animation: 1s slideInTop;
+    transition: transform, 1s;
+}
+
+.dialog.remove .dialog-top {
+    animation: 1s slideInTop reverse;
+}
+
+.dialog-close svg {
+    width: 32px;
+    height: 32px;
+}
+
+.dialog-name {
+    padding: 10px 50px 10px 50px;
+    border-bottom: 4px solid var(--theme-dark);
+    top: 5px;
+    font-size: 28px;
+    margin: 0px -50px 50px -50px;
+    text-transform: uppercase;
+    line-height: 50px;
+}
+
+.dialog-name img {
+    height: 50px;
+    margin-bottom: -20px;
+    margin-right: 20px;
+}
+
+.dialog-footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 30vh;
+    width: 100vw;
+    background: var(--theme);
+    animation: 1s slideInBottom;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: transform, 1s;
+}
+
+.dialog:not(.terminated) .dialog-footer .btn, .dialog:not(.terminated) .dialog-footer .btn-outline {
+    visibility: hidden;
+}
+
+.dialog.remove .dialog-footer {
+    transform: translateY(100%);
+}
+
+.dialog.remove .dialog-top {
+    transform: translateY(-100%);
+}
+
+#dialog-elem {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 35px;
+    color: white;
+    white-space: nowrap;
+}
+
+#hint {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    font-size: 40px;
+    color: white;
+    z-index: 999;
+}
+
+.btn {
+    border: 2px solid var(--theme-dark);
+    background: var(--theme-dark);
+    color: white;
+    padding: 20px 100px;
+    font-size: 25px;
+    margin: 15px;
+    cursor: pointer;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    border-color: white;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+    padding: 20px 100px;
+    font-size: 25px;
+    margin: 15px;
+    width: fit-content;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--theme-dark);
+}
+
+#btn-holder {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes slideInBottom {
+    0% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideInTop {
+    0% {
+        transform: translateY(-100%);
+    }
+
+}
+
+.dialog-content {
+    font-family: "Poppins", sans-serif;
+}

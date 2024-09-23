@@ -1,0 +1,12 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+    font-family: "impact";
+}
+#canvas {
+    width: 100vw;
+    height: 100vh;
+    transition: 1s;
+}
+
+

@@ -8,4 +8,8 @@ canvas.height = innerHeight;
 
 const BG_COLOR = getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme');
 
-let game = new Game();
+let game;
+
+addEventListener("DOMContentLoaded", () => {
+    game = new Game();
+})

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/global.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/canvas.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/dialog.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/skinMenu.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/pick-level-menu.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/pick-personnality-menu.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/caracter-quizz.css") }}">
+    <link rel="stylesheet" href="{{ asset("aventure-eco-logic/css/startpopup.css") }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <title>L'aventure culture</title>
+</head>
+
+<body>
+
+    <canvas id="canvas"></canvas>
+    <div id="frame"></div>
+    <div id="dialogs"></div>
+
+    <div id="pick-level-menu">
+        <h1>Choisissez votre aventure</h1>
+        <div id="menu-list">
+            <div class="level" data-level="design">
+                <img src="{{ asset("aventure-eco-logic/img/icone_design.png") }}" alt="" class="level-image">
+                <h2 class="level-title">DESIGN</h2>
+            </div>
+            <div class="level" data-level="sciences">
+                <div class="level-image" id="niveau2">VERROUILLÉ</div>
+                <h2 class="level-title">SCIENCES</h2>
+            </div>
+            <div class="level" data-level="litterature">
+                <div class="level-image" id="niveau3">VERROUILLÉ</div>
+                <h2 class="level-title">LITTERATURE</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="pick-personnality-menu">
+        <h1>Choisissez votre personnalité</h1>
+        <div id="menu-list">
+            <div class="personnality" data-personnality="JamesDyson">
+                <div class="personnality-image">
+                    <img src="{{ asset("aventure-eco-logic/img/james-dyson.png") }}" alt="">
+                </div>
+                <h2 class="personnality-title">James Dyson</h2>
+            </div>
+            <div class="personnality" data-personnality="PhillipeStark">
+                <div class="personnality-image">
+                    <img src="{{ asset("aventure-eco-logic/img/phillipe-stark.png") }}" alt="">
+                </div>
+                <h2 class="personnality-title">Phillipe Stark</h2>
+            </div>
+            <div class="personnality" data-personnality="SteveJobs">
+                <div class="personnality-image">
+                    <img src="{{ asset("aventure-eco-logic/img/steve_jobs.png") }}" alt="">
+                </div>
+                <h2 class="personnality-title">Steve Jobs</h2>
+            </div>
+            <div class="personnality" data-personnality="VernerPanton">
+                <div class="personnality-image">
+                    <img src="{{ asset("aventure-eco-logic/img/verner-panton.png") }}" alt="">
+                </div>
+                <h2 class="personnality-title">Verner Panton</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="startpopup">
+        <div id="close-startpopup" onclick="this.parentNode.remove()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+            </svg>
+        </div>
+        <h3>AVANT DE DÉBUTER</h3>
+        <p>Ce jeu est un mini quizz autour du sujet : Réduire l'impact logiciel. Vous allez devoir répondre à des questions de culture générale, autour de la réduction d'energie logicielle.</p>
+        <h3>BONNE CHANCE</h3>
+    </div>
+
+    <img src="{{ asset("aventure-eco-logic/img/james-dyson.png") }}" alt="player" id="player" class="canva-image">
+    <img src="{{ asset("aventure-eco-logic/img/james-dyson.png") }}" alt="player" id="james-dyson" class="canva-image">
+    <img src="{{ asset("aventure-eco-logic/img/phillipe-stark.png") }}" alt="player" id="philippe-starck" class="canva-image">
+    <img src="{{ asset("aventure-eco-logic/img/steve_jobs.png") }}" alt="player" id="steve-jobs" class="canva-image">
+    <img src="{{ asset("aventure-eco-logic/img/james-dyson.png") }}" alt="player" id="james-dyson" class="canva-image">
+    <img src="{{ asset("aventure-eco-logic/img/verner-panton.png") }}" alt="player" id="verner-panton" class="canva-image">
+    <img src="{{ asset("aventure-eco-logic/img/premier_plan.png") }}" alt="" id="front-plane">
+    <img src="{{ asset("aventure-eco-logic/img/premier_plan_attention.png") }}" alt="" id="front-plane-game-end">
+    <img src="{{ asset("aventure-eco-logic/img/arriere_plan.png") }}" alt="" id="back-plane">
+
+
+    <script src="{{ asset("aventure-eco-logic/js/map.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/DialogScreen.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/Menu.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/skinMenu.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/PickLevelMenu.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/Dialog.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/CaracterQuizz.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/LoadingScreen.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Element/ActionButton.js") }}"></script>
+
+    <script src="{{ asset("aventure-eco-logic/js/Wall.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Caracter.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/player.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/Level.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/levels/Design.js") }}"></script>
+
+    <script src="{{ asset("aventure-eco-logic/js/Game.js") }}"></script>
+    <script src="{{ asset("aventure-eco-logic/js/main.js") }}"></script>
+
+</body>
+
+</html>

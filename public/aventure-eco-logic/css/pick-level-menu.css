@@ -1,0 +1,54 @@
+#pick-level-menu {
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    background: var(--theme);
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#pick-level-menu #menu-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 1400px;
+    margin: 125px auto;
+    max-width: 100%;
+}
+
+#pick-level-menu #menu-list .level {
+    width: 10vw;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#pick-level-menu #menu-list .level:hover {
+    transform: scale(1.5);
+    margin: auto 50px;
+}
+
+
+
+#pick-level-menu #menu-list .level .level-image {
+    transition: var(--transition);
+    height: 10vw;
+    border-radius: 40px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#pick-level-menu #menu-list .level .level-title {
+    font-size: 25px;
+}
+
+#pick-level-menu h1 {
+    width: 100%;
+}
