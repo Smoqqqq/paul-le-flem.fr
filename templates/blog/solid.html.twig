@@ -223,7 +223,7 @@ class FancyUserEmailer implements UserEmailerInterface {
         </code></pre>
 
         <p class="mt-100">Désormais, les classes <code>UserEmailer</code> et <code>FancyUserEmailer</code> devrons toutes les deux implémenter la méthode <code>convertToHtml()</code>. Cependant, la classe <code>UserEmailer</code> n'as pas besoin de cette fonctionnalitée, car elle ne sert qu'as envoyer des mails simple. Cependant, elle devra obligatoirement implémenter la méthode, même si elle ne sera pas utilisée.</p>
-        <p>La solution à se problème est kla ségrégation des interfaces. Pour cela, nous créerons une deuxième interface, permettant la conversion des emails en HTML :</p>
+        <p>La solution à se problème est la ségrégation des interfaces. Pour cela, nous créerons une deuxième interface, permettant la conversion des emails en HTML :</p>
 
                 		<pre><code class="language-php mt-100">
 interface UserEmailerInterface {
