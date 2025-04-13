@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class PageController extends AbstractController
 {
@@ -12,12 +12,6 @@ class PageController extends AbstractController
     public function index(): Response
     {
         return $this->render('page/index.html.twig');
-    }
-
-    #[Route('/jeu-aventure-eco-logic', name: 'app_aventure_eco_logic')]
-    public function aventureEcoLogic(): Response
-    {
-        return $this->render('jeu-aventure-eco-logic/index.html.twig');
     }
 
     #[Route("/sankliche")]

@@ -138,6 +138,7 @@
 				</div>
 			</a>
 
+			{#
 			<div class="project-preview cursor_soon_trigger">
 				<img src="{{ asset("build/images/projets/un-jeune-une-alternance/cover.jpg") }}" alt="Image de couverture Un jeune une alternance" class="preview"/>
 				<div class="project-title">
@@ -163,8 +164,9 @@
 					2022
 				</div>
 			</div>
+			#}
 
-			<div class="project-preview cursor_soon_trigger">
+			<a href="{{ path("app_project_anglais_sans_probleme") }}" class="project-preview cursor_trigger">
 				<img src="{{ asset("build/images/projets/anglais-sans-probleme/paul_le_flem_cover_anglais_sans_probleme.jpg") }}" alt="Image de couverture ESP Automobiles" class="preview"/>
 				<div class="project-title">
 					Site vitrine
@@ -175,7 +177,7 @@
 				<div class="project-date">
 					2021
 				</div>
-			</div>
+			</a>
 
 {# 			<div class="project-preview cursor_soon_trigger">
 				<img src="{{ asset("build/images/projets/form-part/paul_le_flem_form_part_cover.png") }}" alt="Image de couverture ESP Automobiles" class="preview"/>

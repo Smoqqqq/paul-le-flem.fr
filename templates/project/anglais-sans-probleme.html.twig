@@ -1,0 +1,85 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Le premier site internet que j'ai développé et hébergé
+{% endblock %}
+
+{% block description %}
+	Découvrez le site anglais-sans-probleme.fr, ma toute première réalisation entièrement développé et hébergé par mes soins. Un site vitrine pour un professeur d'anglais, avec un design simple et efficace.
+{% endblock %}
+
+{% block content %}
+	<div class="project-header">
+		<h2 class="project-title">Anglais sans problème - Site vitrine pour un professeur d'anglais</h2>
+		<h1 class="project-main-title">Everything not saved will be lost, so save it in your mind</h1>
+		<a href="https://anglais-sans-probleme.fr" class="project-link" target="_blank">anglais-sans-probleme.fr</a>
+	</div>
+
+{#	<div class="image-zoom">#}
+		<img src="{{ asset("build/images/projets/anglais-sans-probleme/paul_le_flem_accueil_anglais_sans_probleme.png") }}" alt="Mockup de l'application" class="header-mockup">
+{#	</div>#}
+
+	<div class="container mt-100">
+		<div class="text-block">
+			<div class="title">
+				<h2>Le contexte</h2>
+			</div>
+			<div class="content">
+				<p>Hans Verasdonck est un néerlandais avec une carrière de 40 ans dans l'informatique. Après 10 ans au Pays Bas, puis 30 ans en France, Hans parle couramment le français, l’anglais, le néerlandais et raisonnablement bien l’allemand. Depuis sa retraire, Hans dédie une partie de son temps à donner des cours d'anglais à ces élèves.</p>
+			</div>
+		</div>
+		<div class="text-block">
+			<div class="title">
+				<h2>Origine du projet</h2>
+			</div>
+			<div class="content">
+				<p>Hans souhaitais donner de la visibilité à son business de cours d'anglais. Via l'intermédiaire de <a href="https://agathe-verasdonck.fr" class="simple-link">Agathe Verasdonck</a>, sa petite fille, j'ai proposé de réaliser pour lui son site internet, de manière bénévole. C'est ainsi que, en collaboration avec Agathe en tant que designeuse, nous avons démarré la réalisation d'un site vitrine.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row skills">
+			<div class="col-md-4">
+				<h3>Technologies utilisées</h3>
+				<ul>
+					<li>PHP 7.4</li>
+					<li>CSS</li>
+					<li>Hébergement OVH</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Conditions de travail</h3>
+				<ul>
+					<li>Travail en duo avec une UI / UX Designer</li>
+					<li>Développé en quelque jours</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<h3>Rôle</h3>
+				<ul>
+					<li>Conception technique</li>
+					<li>Développement</li>
+					<li>Hébergement</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-block mt-100">
+			<div class="title noanim">
+				<img src="{{ asset("build/images/projets/anglais-sans-probleme/paul_le_flem_fichier_traduction_anglais_sans_probleme.png") }}" alt="Définition d'une traduction">
+				<p>Définition d'une traduction</p><br>
+
+				<img src="{{ asset("build/images/projets/anglais-sans-probleme/paul_le_flem_traduction_template_anglais_sans_probleme.png") }}" alt="Usage de la traduction">
+				<p>Utilisation de la traduction</p>
+			</div>
+			<div class="content">
+				<h2>Traduction</h2>
+				<p>Une des fonctionnalitées souhaitées par Hans était la traduction de son site en deux langues : Francais et Anglais. Pour cela, j'ai décidé d'utiliser des fichiers "de langue" PHP : un fichier par langue, dans lequel je définit des constantes correspondant à chaque texte de la page. Il suffit ensuite d'inclure le fichier correspondant à la langue choisit en fonction d'un cookie, qui permet d'enregistrer le choix de l'utilisateur.</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
